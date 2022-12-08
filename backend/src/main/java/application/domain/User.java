@@ -1,20 +1,18 @@
 package application.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.mongodb.lang.NonNull;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 @Document("users")
 public class User {
-    @Id
-    private String id;
-
-    private String username;
-    private String password;
-    private String address;
+    @Id  private String id;
+    @Getter @NonNull  private String username;
+    @Getter @Setter @NonNull  private String password;
+    @Getter @Setter private String address;
 }
