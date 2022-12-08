@@ -21,7 +21,10 @@ import {HttpClientModule} from "@angular/common/http";
 //     component: HomePageComponent
 //   },
   {
-    path: 'user-profile/:id', component: UserComponent
+    path: '', component: UserComponent
+  },
+  {
+    path: 'users/:id', component: UserComponent
   }
 //   {
 //     path: 'animals', component: AnimalsListComponent
@@ -38,12 +41,12 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
-    // RouterModule.forRoot(appRoutes),
-    // HttpClientModule
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
-  // exports: [
-  //   RouterModule,
-  // ],
+  exports: [
+    RouterModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

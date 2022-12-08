@@ -1,6 +1,5 @@
-
 <div class="container">
-<div id="user-profile-2" class="user-profile">
+  <div id="user-profile-2" class="user-profile">
     <div class="tabbable">
 
 
@@ -9,7 +8,8 @@
           <div class="row">
             <div class="col-xs-12 col-sm-3 center">
               <span class="profile-picture">
-                <img class="editable img-responsive" alt=" Avatar" id="avatar2" src="../../../assets/download.png">
+<!--                <img class="editable img-responsive" alt=" Avatar" id="avatar2" src="../../../assets/download.png">-->
+                <img class="editable img-responsive" alt=" Avatar" id="avatar2" [src]="user.profilePicturePath">
               </span>
 
               <div class="space space-4"></div>
@@ -23,7 +23,7 @@
                 <i class="ace-icon fa fa-envelope-o bigger-110"></i>
                 <span class="bigger-110">Send a message</span>
               </a>
-            </div><!-- /.col -->
+            </div>
 
             <div class="col-xs-12 col-sm-9">
               <h4 class="blue">
@@ -37,33 +37,31 @@
 
               <div class="profile-user-info">
                 <div class="profile-info-row">
-                  <div class="profile-info-name"> Username </div>
+                  <div class="profile-info-name"> Username</div>
 
                   <div class="profile-info-value">
-                    <span>Avram</span>
+                    <span>{{user.username}}</span>
                   </div>
                 </div>
 
                 <div class="profile-info-row">
-                  <div class="profile-info-name"> Location </div>
+                  <div class="profile-info-name"> Address</div>
 
                   <div class="profile-info-value">
                     <i class="fa fa-map-marker light-orange bigger-110"></i>
-                    <span>Netherlands</span>
-                    <span>Amsterdam</span>
+                    <span>{{user.address}}</span>
                   </div>
                 </div>
 
                 <div class="profile-info-row">
-                  <div class="profile-info-name"> Age </div>
-
+                  <div class="profile-info-name"> Age</div>
                   <div class="profile-info-value">
                     <span>38</span>
                   </div>
                 </div>
 
                 <div class="profile-info-row">
-                  <div class="profile-info-name"> Joined </div>
+                  <div class="profile-info-name"> Joined</div>
 
                   <div class="profile-info-value">
                     <span>2010/06/20</span>
@@ -71,7 +69,7 @@
                 </div>
 
                 <div class="profile-info-row">
-                  <div class="profile-info-name"> Last Online </div>
+                  <div class="profile-info-name"> Last Online</div>
 
                   <div class="profile-info-value">
                     <span>3 hours ago</span>
@@ -83,7 +81,7 @@
 
               <div class="profile-user-info">
                 <div class="profile-info-row">
-                  <div class="profile-info-name"> Website </div>
+                  <div class="profile-info-name"> Website</div>
 
                   <div class="profile-info-value">
                     <a href="#" target="_blank">www.avr.com</a>
@@ -128,16 +126,7 @@
                 <div class="widget-body">
                   <div class="widget-main">
                     <p>
-                      My job is mostly lorem ipsuming and dolor sit ameting as long as consectetur adipiscing elit.
-                    </p>
-                    <p>
-                      Sometimes quisque commodo massa gets in the way and sed ipsum porttitor facilisis.
-                    </p>
-                    <p>
-                      The best thing about my job is that vestibulum id ligula porta felis euismod and nullam quis risus eget urna mollis ornare.
-                    </p>
-                    <p>
-                      Thanks for visiting my profile.
+                      {{user.description}}
                     </p>
                   </div>
                 </div>
@@ -151,11 +140,11 @@
             <div class="col-sm-6">
               <div class="profile-activity clearfix">
 
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
