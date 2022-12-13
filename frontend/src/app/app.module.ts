@@ -6,6 +6,7 @@ import { UserComponent } from './components/user/user.component';
 
 import {RouterModule, Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
+import { HomepageComponent } from './components/homepage/homepage.component';
 
  const appRoutes: Routes = [
 //   // {
@@ -37,7 +38,8 @@ import {HttpClientModule} from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
