@@ -6,6 +6,7 @@ import { UserComponent } from './components/user/user.component';
 
 import {RouterModule, Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
+import { QuizComponent } from './quiz/quiz.component';
 
  const appRoutes: Routes = [
 //   // {
@@ -37,7 +38,8 @@ import {HttpClientModule} from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
