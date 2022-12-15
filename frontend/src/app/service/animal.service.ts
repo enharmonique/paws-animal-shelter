@@ -19,6 +19,12 @@ export class AnimalService {
     );
   }
 
+  public getAnimalsByType(type: string): Observable<Animal[]> {
+    return this.http.get<Animal[]>(this.animalsUrl+'/type/'+type).pipe(
+      tap(data => console.log(data))
+    );
+  }
+
   public getAnimalById(id: string): Observable<Animal> {
     return this.http.get<Animal>(this.animalsUrl+'/'+id).pipe(
       tap(data => console.log(data))

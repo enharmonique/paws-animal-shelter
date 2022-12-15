@@ -15,7 +15,7 @@ export class Animal {
   name!: string;
   type!: Type;
   breed!: string;
-  age!: number;
+  age!: string;
   dateAdded!: string;
   description!: string;
   imagePath!: string;

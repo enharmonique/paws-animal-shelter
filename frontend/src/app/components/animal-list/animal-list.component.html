@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-2">
+      <nav class="navbar bg-light">
+        <div class="container-fluid">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" routerLink="/animals/all">All</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/animals/DOG">Dogs</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/animals/CAT">Cats</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/animals/RODENT">Rodents</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/animals/BIRD">Birds</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/animals/REPTILE">Reptiles</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/animals/EQUINE">Equines</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/animals/FISH">Fish</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/animals/AMPHIBIAN">Amphibians</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/animals/INSECT">Insects</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-6" *ngFor="let animal of animals">
+          <div class="card">
+            <img class="card-img-top" [src]="animal.imagePath" alt="{{animal.name}}">
+            <div class="card-body">
+              <h4 class="card-title">{{animal.name}}</h4>
+              <p class="card-text">
+                <i>
+                  Breed: {{animal.breed}} <br>
+                  Age: {{animal.age}} <br>
+                  Date added: {{animal.dateAdded}} <br>
+                </i>
+                {{animal.description}}
+              </p>
+              <button
+                class="btn btn-success"
+                type="button"
+                (click)="onAdopt()">
+                Adopt
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
