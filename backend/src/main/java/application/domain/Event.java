@@ -11,9 +11,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("events")
 public class Event {
     @Id  private String id;
-    @Getter @NonNull  private String title;
+    @Getter @NonNull  private String name;
+    @Getter @Setter private String location;
+    @Getter @Setter private String date;
     @Getter @Setter private String description;
-    @Getter @Setter @NonNull private String location;
-    @Getter @Setter private String dateTime;
-    @Getter @Setter @NonNull private String category;
+    @Getter @Setter private String imagePath;
+    @Getter @Setter private String noParticipants;
 }
