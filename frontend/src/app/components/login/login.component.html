@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class ="outer">
+  <div class ="container">
+    <div class = "row">
+      <div class ="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offert-md-3">
+        <div class="panel border bg-white">
+          <div class="c">
+          <div class = "panel-hiding">
+            <h3 class="pt-3 font-weight-bold text-center">Login</h3>
+          </div>
+          <div class ="panel-body p-3">
+            <form>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-user p-2"></span>
+                  <input type="text" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-lock p-2" aria-hidden="false"></span>
+                  <input [type]="type" placeholder="Password">
+                  <span (click)="hideShowPass()" class="fa {{eyeICon}}"></span>
+                </div>
+              </div>
+              <div class ="form-inline fr nt-4">
+                <a id="forget" class="font-weight-bold">Forgot Password?</a>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lock mt-4 w-100">Login</button>
+            <div class="text-center pt4 text-muted">Don't have account?<a id="signUp" routerLink="/signup">Sign Up</a></div>
+            </form>
+          </div>
+          </div>
+        </div>
+<!--        <div class="mx-3 my-2 py-2 bordert">-->
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+<!--</div>-->
