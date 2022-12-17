@@ -69,19 +69,12 @@ function slideImage(){
 
 window.addEventListener('resize', slideImage);
 
-
-
-
-
-
 previewBox.forEach(close =>{
   close.querySelector('.fa-times').onclick = () =>{
     close.classList.remove('active');
     preveiwContainer.style.display = 'none';
   };
 });
-
-
 
 $(document).ready(function() {
     $(".item-carousel").owlCarousel({
@@ -100,3 +93,93 @@ $(document).ready(function() {
         }
     });
 });
+
+
+
+//cart-wishlist
+let cartIcon=document.querySelector('#cart-icon');
+let cart=document.querySelector('.cart');
+let closeCart=document.querySelector('#close-cart');
+
+//open wishlist
+cartIcon.onclick = () =>{
+  cart.classList.add("active");
+};
+//close wishlist
+closeCart.onclick = () =>{
+  cart.classList.remove("active");
+};
+
+//wishlist working JS
+if(document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", ready);
+} else{
+  ready();
+}
+
+//making function ready
+function ready(){
+  //remove items from wishlist
+  var removeCartButtons=document.getElementsByClassName('cart-remove');
+  concole.log(removeCartButtons);
+  for(var i=0;i<removeCartButtons.length;i++){
+    var button=removeCartButtons[i];
+    button.addEventListener("click", removeCartItem);
+  }
+  //adoption button
+  document
+    .getElementsByClassName("btn-buy")[0]
+    .addEventListener("click", buyButtonClicked);
+}
+
+//adopt button
+function buyButtonClicked(){
+  alert('your order is placed');
+  var cartContent=document.getElementsByClassName('cart-content')[0];
+  while(cartContent.hasChildNodes()){
+    cartContent.removeChild(cartContent.firstChild);
+  }
+}
+
+//remove items from wishlist
+function removeCartItems(event){
+  var buttonClicked=event.target;
+  buttonClicked.parentElement.remove();
+}
+var addCart = document.getElementsByClassName('add-cart');
+for (var i=0;i<addCart.length;i++){
+  var button=addCart[i];
+  button.addEventListener('click',addCartClicked);
+}
+
+//add to wishlist
+function addCartClicked(event){
+  var button =event.target;
+  var shopProducts=button.parentElement;
+  var title=shopProducts.getElementsByClassName("product-name")[0].innerText;
+  var productImg=shopProducts.getElementsByClassName("product__item__pic")[0].src;
+
+  addProductToCart.log(title,productImg);
+}
+
+function addProductToCart(title,productImg){
+  var cartShopBox=document.createElement("div");
+  var cartItems=document.getElementsByClassName("cart-content")[0];
+  var cartItemsNames=cartItems.getElementsByClassName("cart-product-title");
+  for(var i=0;i<cartItemsNames.length;i++){
+    if(cartItemsNames[i].innerText == title){
+      alert("Already in wishlist");
+      return;
+    }
+  }
+  cartShopBox.innerHTML = `<img src="${productImg}" alt="" class="cart-img">
+                                     <div class="detail-box">
+                                       <div class="cart-product-title">${title}</div>
+                                     </div>
+                                     <i class="fa fa-trash cart-remove"></i>`;
+  cartItems.append(cartShopBox);
+  cartShopBox
+    .getElementsByClassName('cart-remove')[0]
+    .addEventListener('click', removeCartItem);
+}
+
