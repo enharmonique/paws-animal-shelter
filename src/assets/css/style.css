@@ -76,8 +76,42 @@ ol {
 }
 
 /*---------------------
-  Helper CSS
+ wishlist + helper css
 -----------------------*/
+.container{
+  max-width: 1068px;
+  margin: auto;
+  width: 100%;
+}
+.nav{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+#cart-icon{
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: whitesmoke;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .section-title {
 	margin-bottom: 45px;
@@ -978,9 +1012,8 @@ img{
     margin-right: 6px;
 }
 .product-description{
-    font-weight: 18px;
-    line-height: 1.6;
     font-weight: 300;
+    line-height: 1.6;
     opacity: 1;
     margin-top: 22px;
 	text-align: center;
@@ -1056,7 +1089,7 @@ img{
 	width: 400px;
 	margin-bottom: 2px;
 	display: inline-block;
-	
+
 }
 
 .product__details__pic__item a {
