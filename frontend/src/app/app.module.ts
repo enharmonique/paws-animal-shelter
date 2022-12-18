@@ -11,7 +11,7 @@ import {HeaderComponent} from './components/header/header.component';
 import {AnimalListComponent} from './components/animal-list/animal-list.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
 import { LoginComponent } from './components/login/login.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SignupComponent } from './components/signup/signup.component';
 
 const appRoutes: Routes = [
@@ -57,7 +57,8 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     // MatButtonModule
   ],
   exports: [
