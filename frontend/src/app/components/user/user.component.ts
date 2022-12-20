@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../service/user.service";
-import {ActivatedRoute, Params} from "@angular/router";
 import {User} from "../../model/user.model";
+import {Adoption} from "../../model/adoption.model";
+import {AdoptionService} from "../../service/adoption.service";
 
 @Component({
   selector: 'app-user',
@@ -10,23 +11,24 @@ import {User} from "../../model/user.model";
 })
 export class UserComponent implements OnInit {
   user!: User;
-  id!: string;
+  id!: string | null;
+  adoptions: Adoption[] = [];
 
   constructor(private userService: UserService,
-              private route: ActivatedRoute) {
+              private adoptionsService: AdoptionService) {
     this.user = new User();
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.id = params['id'];
-        this.userService.getUserById(this.id).subscribe(
-          user => {
-            this.user = user;
-            console.log(user);
-          }
-        )
+    this.id = localStorage.getItem('loggedInUserId');
+    this.userService.getUserById(this.id!).subscribe(
+      user => {
+        this.user = user;
+      }
+    );
+    this.adoptionsService.getAdoptionsByUserId(this.id!).subscribe(
+      adoptions => {
+        this.adoptions = adoptions;
       }
     );
   }

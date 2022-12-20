@@ -11,7 +11,7 @@ enum Type {
 }
 
 export class Animal {
-  id!: string;
+  id?: string;
   name!: string;
   type!: Type;
   breed!: string;

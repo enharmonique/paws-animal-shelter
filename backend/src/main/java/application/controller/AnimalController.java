@@ -1,13 +1,12 @@
 package application.controller;
 
 import application.domain.Animal;
+import application.domain.AuthResponse;
+import application.domain.User;
 import application.repository.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +34,12 @@ public class AnimalController {
                 .stream()
                 .filter(animal -> animal.getType().toString().equals(type))
                 .toList();
-        System.out.println(animals);
         return ResponseEntity.ok(animals);
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public ResponseEntity<Animal> addAnimal(@RequestBody Animal animal){
+        animalRepository.save(animal);
+        return ResponseEntity.ok().body(animal);
     }
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { tap, Observable } from "rxjs";
+import {tap, Observable, map} from "rxjs";
 import {Animal} from "../model/animal.model";
 
 @Injectable({
@@ -28,6 +28,14 @@ export class AnimalService {
   public getAnimalById(id: string): Observable<Animal> {
     return this.http.get<Animal>(this.animalsUrl+'/'+id).pipe(
       tap(data => console.log(data))
+    );
+  }
+
+  public addAnimal(animal: Animal): Observable<any> {
+    return this.http.post(this.animalsUrl, animal).pipe(
+      map((res: any) => {
+        return res
+      })
     );
   }
 

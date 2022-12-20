@@ -1,12 +1,28 @@
 <nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">Paws Animal Shelter</a>
+    <a class="navbar-brand" routerLink="/animals/all">Paws Animal Shelter</a>
     <ul class="navbar-nav navbar-right">
       <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/animals/all">Animals</a></li>
-      <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/quiz">Quiz</a></li>
+<!--      <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/quiz">Quiz</a></li>-->
       <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/events">Events</a></li>
-      <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/users/:id">My Profile</a></li>
-      <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/users">Login</a></li>
+      <button mat-icon-button
+              *ngIf="loggedIn"
+              class="text-light"
+              [routerLink]="['users', idUser]">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button *ngIf="!loggedIn"
+              mat-icon-button
+              [routerLink]="['login']"
+              class="text-light">
+        <mat-icon>login</mat-icon>
+      </button>
+      <button *ngIf="loggedIn"
+              mat-icon-button
+              (click)="logout()"
+              class="text-light">
+        <mat-icon>logout</mat-icon>
+      </button>
     </ul>
   </div>
 </nav>

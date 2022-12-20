@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Animal} from "../../model/animal.model";
 import {AnimalService} from "../../service/animal.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import {AdoptionService} from "../../service/adoption.service";
 
 @Component({
   selector: 'app-animal-list',
@@ -13,6 +14,7 @@ export class AnimalListComponent implements OnInit {
   type!: string;
 
   constructor(private animalService: AnimalService,
+              private adoptionService: AdoptionService,
               private router: Router,
               private route: ActivatedRoute) { }
 
@@ -39,7 +41,14 @@ export class AnimalListComponent implements OnInit {
     );
   }
 
-  onAdopt() {
-
+  onAdopt(idAnimal: string) {
+    this.adoptionService.addAdoption(
+      {
+        idAnimal: idAnimal,
+        idUser: localStorage.getItem('loggedInUserId'),
+        status: null
+      }
+    ).subscribe();
+    alert("Adoption made successfully!");
   }
 }
