@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
     //True if all the fields are filled
     let routerLink;
     if (this.submitted) {
-      routerLink = "/signup";
+      routerLink = "/events";
     }
 
   }
