@@ -96,6 +96,9 @@ $(document).ready(function() {
 
 
 
+
+
+
 //cart-wishlist
 let cartIcon=document.querySelector('#cart-icon');
 let cart=document.querySelector('.cart');
