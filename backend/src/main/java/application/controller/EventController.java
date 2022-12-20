@@ -1,5 +1,7 @@
 package application.controller;
 
+import application.domain.AdoptionEntry;
+import application.domain.Animal;
 import application.domain.Event;
 import application.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
