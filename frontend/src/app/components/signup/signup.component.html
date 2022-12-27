@@ -1,0 +1,121 @@
+<div class ="outer">
+  <div class ="container">
+    <div class = "row">
+      <div class ="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offert-md-3">
+        <div class="panel border bg-white">
+          <div class = "panel-hiding">
+            <h3 class="pt-3 font-weight-bold text-center">Sign up</h3>
+          </div>
+          <div class ="panel-body p-3">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-user p-2"></span>
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    formControlName="firstName"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                  />
+                  <div
+                    *ngIf="submitted && f.firstName.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.firstName.errors">
+                      First Name is required
+<!--                      <br>-->
+<!--                      Name should contain only letters-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div class="form-group pt-3">
+                  <div class="input-field">
+                    <span class="fa fa-user p-2"></span>
+                    <input type="text"
+                           placeholder="Last Name"
+                           formControlName="lastName"
+                           class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"/>
+                    <div
+                      *ngIf="submitted && f.lastName.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.lastName.errors">
+                        Last Name is required
+<!--                        <br>-->
+<!--                        Last Name should contain only letters-->
+                      </div>
+                  </div>
+                </div>
+                </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-user p-2"></span>
+                  <input
+                    id="email"
+                    type="text"
+                    placeholder="E-mail"
+                    class="form-control"
+                    formControlName="email"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                  />
+                  <div
+                    *ngIf="submitted && f.email.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.email.errors">
+                      Email is required
+                      <br>
+                      Email must be a valid email address
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-lock p-2" aria-hidden="false"></span>
+                  <input
+                    [type]="type"
+                    placeholder="Password"
+                    formControlName="password"
+                    [ngClass]="{
+                        'is-invalid': submitted && f.password.errors
+                      }"
+                    id="inputPassword4"
+                  />
+                  <span
+                    (click)="hideShowPass()"
+                    class="fa {{ eyeICon }}"
+                  ></span>
+                  <div
+                    *ngIf="submitted && f.password.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.password.errors">
+                      Password is required
+                      <br>
+                      Password must contain more than 8 characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class ="form-inline fr nt-4">
+                <a id="forget" class="font-weight-bold">Forgot Password?</a>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lock mt-4 w-100">Sign Up</button>>
+              <div class="text-center pt4 text-muted">Already have an account<a id="signUp" routerLink="/login">Login</a></div>
+            </form>
+          </div>
+        </div>
+        <!--        <div class="mx-3 my-2 py-2 bordert">-->
+
+        <!--        </div>-->
+
+      </div>
+    </div>
+  </div>
+</div>
+
