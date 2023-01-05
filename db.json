@@ -1,0 +1,107 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Roco",
+      "description": "Roco is a very lazy parrot. He likes to eat a lot and gets angry if you don't give him extra seeds",
+      "category": "birds",
+      "imageUrl": "assets/img/1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "description": "Bob is small but has a big personality. He requires daily care, exercise, and attention.",
+      "category": "hamsters",
+      "imageUrl": "assets/img/2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Jack",
+      "description": "His sweet personality is sure to melt your heart. Jack loves to romp in the yard but would be a great couch buddy too!",
+      "category": "dogs",
+      "imageUrl": "assets/img/3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Kimi",
+      "description": "Kimi can be shy at first but given enough time and once she knows she can trust you will be the center of attention. She loves to be where her humans are and is never far from where the activity is in the house and likes to explore new places in her home.",
+      "category": "cats",
+      "imageUrl": "assets/img/4.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Toni",
+      "description": "I'm a healthy baby male and I'm looking for you to adopt me today! The shelter recommends a 45 gallon tank for me. Will you give me a forever home?",
+      "category": "turtles",
+      "imageUrl": "assets/img/5.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Lulu",
+      "description": "I'm a healthy 3 year old yellow gecko and I'm available for you to adopt me today! I require a minimum of a 40 gallon enclosure to live in.",
+      "category": "lizards",
+      "imageUrl": "assets/img/6.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Rocky",
+      "description": "Her sweet personality is sure to melt your heart. Rocky loves to play in the yard but would be a great couch buddy too!",
+      "category": "dogs",
+      "imageUrl": "assets/img/7.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Gheorghe",
+      "description": "Gheorghe is funny. He likes sleeping with his eyes open and head hanging out of the hide so don't worry if you see this, he is completely fine! He's shy, but he loves to be held and doesn't bite, which is a good sign.",
+      "category": "hamsters",
+      "imageUrl": "assets/img/8.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Blu",
+      "description": "Blu loves to be where her humans are and is never far from where the activity is in the house and likes to explore new places in her home. In the cold season, she needs different clothes because she is a hairless cat and Blu will be cold if she is not properly dressed.",
+      "category": "cats",
+      "imageUrl": "assets/img/9.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Bogdi",
+      "description": "Bogdi is very playful, is quick to learn and has figured out that sitting gets him fed faster at meal times! He is gentle and loving with humans and loves to snuggle. He needs a strong person on the other end of the lead, and one that is patient enough to work with him. He is very vocal when something catches his eye…or ears. If you are someone who appreciates those qualities, you will definitely fall for this guy.",
+      "category": "dogs",
+      "imageUrl": "assets/img/10.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Luis",
+      "description": "Luis is a fish with a lot of energy and sometimes he tends to eat too much, so he needs a person to be very careful with him. The shelter recommends an aquarium of at least 5 gallons (19 liters)",
+      "category": "fish",
+      "imageUrl": "assets/img/11.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Layla",
+      "description": "Layla's favorite things are snuggling on the couch, going for walks, watching the world go by outside and sleeping. Layla likes playing with other dogs and can run really fast around them, but she might lose interest after a while and decide sniffing around is more fun and also loves games like hide and seek, where either you hide yourself, or you hide treats for her to sniff out.",
+      "category": "dogs",
+      "imageUrl": "assets/img/12.jpg"
+    }
+  ],
+  "wishlist": [],
+  "cart": [],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
