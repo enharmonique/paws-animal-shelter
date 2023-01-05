@@ -7,11 +7,24 @@
         <div class="header">
             <div class="container">
                 <div class="nav-bar">
+
                     <div class="brand">
                         <a href="#hero">
                             <h1><span>P</span>aws <span>A</span>nimal <span>S</span>helter </h1>
                         </a>
                     </div>
+                  <li><i class="fa fa-heart-o" id="cart-icon" (click)="onOpen()"></i>
+
+                    <div class="cart" *ngIf="showCart">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col">
+                            <app-cart></app-cart>
+                            <button type="button" class="btn-buy">ADOPT NOW</button>
+                          </div>
+                          <i class="fa fa-times" id="close-cart" (click)="onClose()"></i>
+                        </div>
+                      </div></div></li>
                     <div class="nav-list">
                         <div class="hamburger">
                             <div class="bar"></div>
@@ -25,24 +38,7 @@
                             <li><a href="#events" data-after="Events">Events</a></li>
                             <li><a href="#contact" data-after="Contact">Contact</a></li>
 
-                             <div class="nav container">
-                               <i class="fa fa-heart-o" id="cart-icon" (click)="onOpen()"></i>
-                               <div class="cart" *ngIf="showCart">
-                                 <h2 class="cart-title">Your wishlist</h2>
-                                 <div class="cart-content">
-                                   <div class="cart-box">
-                                     <img src="assets/img/1.jpg" alt="" class="cart-img">
-                                     <div class="detail-box">
-                                       <div class="cart-product-title">Roco</div>
-                                     </div>
-                                     <i class="fa fa-trash cart-remove"></i>
-                                   </div>
-                                 </div>
-                                 <button type="button" class="btn-buy">ADOPT NOW</button>
 
-                                 <i class="fa fa-times" id="close-cart" (click)="onClose()"></i>
-                               </div>
-                             </div>
                         </ul>
                     </div>
                 </div>
@@ -50,6 +46,12 @@
         </div>
       <script src="assets/app.js"></script>
     </section>
+
+
+
     <!--End Header-->
 <!--    link to JS-->
     <script src="assets/app.js"></script>
+
+
+

@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.cart-item{
+  font-size:small;
+
+}
+
+.fa-heart{
+  color: red;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .col-md-8 {
+    margin-top: 50px;
+    flex: 0 0 auto;
+    width: 66.66666667%;
+  }
+}

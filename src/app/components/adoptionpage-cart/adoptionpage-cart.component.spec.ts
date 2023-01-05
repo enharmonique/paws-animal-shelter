@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BluDetailsComponent } from './blu-details.component';
+import { AdoptionpageComponent } from './adoptionpage-cart.component';
 
-describe('BluDetailsComponent', () => {
-  let component: BluDetailsComponent;
-  let fixture: ComponentFixture<BluDetailsComponent>;
+describe('AdoptionpageComponent', () => {
+  let component: AdoptionpageComponent;
+  let fixture: ComponentFixture<AdoptionpageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BluDetailsComponent ]
+      declarations: [ AdoptionpageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BluDetailsComponent);
+    fixture = TestBed.createComponent(AdoptionpageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
