@@ -1,0 +1,63 @@
+
+<div class="card mb-4 shadow-sm">
+  <img class="bd-placeholder-img card-img-top p-2"  src="{{productItem.imageUrl}}" alt="">
+
+  <div class="card-body">
+    <p class="card-text">{{productItem.name}}
+    <i *ngIf="addedToWishlist" class="fas fa-heart float-right" (click)="removeProductFromCart()"></i>
+    <i *ngIf="!addedToWishlist" class="far fa-heart float-right" (click)="handleAddToCart()"></i>
+    </p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button type="buton" class="adopt-button" >Adopt</button>
+        <button type="buton" class="viewdetails-button" data-toggle="modal" data-target="#exampleModal" (click)="openpopup()">View details</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="overlay" *ngIf="show"  >
+  <div class="content">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" (click)="closepopup()" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class = "container">
+              <div class = "product-div">
+                <div class = "product-div-left">
+                  <div class = "img-container">
+                    <img [src] = "productItem.imageUrl" width="300px" height="300px" alt = "">
+                  </div>
+                </div>
+                <div class = "product-div-right">
+                  <span class = "product-name">{{productItem.name}}</span>
+                  <p class = "product-description">{{productItem.description}}</p>
+                  <div class = "btn-groups">
+                    <button type = "button" class = "add-cart-btn" (click)="handleAddToCart()"> add to wishlist</button>
+                    <button type = "button" class = "buy-now-btn"><i class = "fa fa-paw"></i> adopt now</button>
+                  </div>
+                  <div class="product__details__last__option">
+                    <ul>
+                      <li><span>Category: {{productItem.category}}</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closepopup()" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

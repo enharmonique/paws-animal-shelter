@@ -13,6 +13,9 @@ import { AdoptionpageListComponent } from './components/adoptionpage-cart/adopti
 import { CartComponent } from './components/adoptionpage-cart/cart/cart.component';
 import { CartItemComponent } from './components/adoptionpage-cart/cart/cart-item/cart-item.component';
 import { AdoptionpageItemComponent } from './components/adoptionpage-cart/adoptionpage-list/adoptionpage-item/adoptionpage-item.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FiltersComponent } from './components/filters/filters.component';
+import { FilterPipe } from './shared/filter.pipe';
 
  const appRoutes: Routes = [
   {
@@ -57,13 +60,17 @@ import { AdoptionpageItemComponent } from './components/adoptionpage-cart/adopti
     AdoptionpageListComponent,
     CartComponent,
     CartItemComponent,
-    AdoptionpageItemComponent
+    AdoptionpageItemComponent,
+    FiltersComponent,
+    FilterPipe
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(appRoutes),
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
   exports: [
     RouterModule
   ],

@@ -1,0 +1,28 @@
+
+
+<!--<div class="cart-item">-->
+<!--  <h2 class="cart-title">Your wishlist</h2>&ndash;&gt;-->
+<!--  <div class="cart-content">-->
+<!--    <div class="cart-box">-->
+<!--      <img src="{{cartItem.imageUrl}}" alt="" class="cart-img">-->
+<!--      <div class="detail-box">-->
+<!--        <div class="cart-product-title">{{cartItem.name}}</div>-->
+<!--      </div>-->
+<!--      <i class="fa fa-trash cart-remove"></i>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+<!--</div>-->
+
+<div class="cart-item">
+  <div class="cart-content">
+    <div class="cart-box">
+      <img width="50px" height="50px" [src]="cartItem.productImageUrl"  alt="" class="cart-img"/>
+      <div class="detail-box">
+        <div class="cart-product-title">{{cartItem.productName}}</div>
+      </div>
+      <i class="fa fa-trash cart-remove" (click)="remove(cartItem) "></i>
+    </div>
+  </div>
+</div>
