@@ -1,7 +1,33 @@
 
-<div class="row" >
-  <div class="col-md-4" *ngFor="let product of productList | filter:searchKey:'name'">
-      <app-adoptionpage-item [productItem]="product" [addedToWishlist]="wishlist.indexOf(product.id) >= 0"></app-adoptionpage-item>
+
+<div class="col-md-1">
+  <ul class="hList">
+    <div class="shop__sidebar__search">
+      <form action="#">
+        <input type="text" [(ngModel)]="searchTerm" (keyup)="search($event)" name="a" placeholder="Search...">
+        <button type="submit"><span class="icon_search"></span></button>
+      </form>
     </div>
+    <li>
+      <div class="menu">
+        <h2 class="menu-title">categories</h2>
+        <ul class="menu-dropdown">
+          <li (click)="filter('')">ALL ANIMALS</li>
+          <li (click)="filter('cats')">CATS</li>
+          <li (click)="filter('dogs')">DOGS</li>
+          <li (click)="filter('hamsters')">HAMSTERS</li>
+          <li (click)="filter('turtles')">TURTLES</li>
+          <li (click)="filter('fish')">FISH</li>
+          <li (click)="filter('lizards')">LIZARDS</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
 </div>
 
+
+<div class="row" >
+  <div class="col-md-4" *ngFor="let product of filterCategory| filter:searchKey:'name'">
+    <app-adoptionpage-item [productItem]="product" [addedToWishlist]="wishlist.indexOf(product.id) >= 0"></app-adoptionpage-item>
+  </div>
+</div>

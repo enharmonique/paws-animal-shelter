@@ -14,7 +14,6 @@ import { CartComponent } from './components/adoptionpage-cart/cart/cart.componen
 import { CartItemComponent } from './components/adoptionpage-cart/cart/cart-item/cart-item.component';
 import { AdoptionpageItemComponent } from './components/adoptionpage-cart/adoptionpage-list/adoptionpage-item/adoptionpage-item.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { FiltersComponent } from './components/filters/filters.component';
 import { FilterPipe } from './shared/filter.pipe';
 
  const appRoutes: Routes = [
@@ -61,7 +60,6 @@ import { FilterPipe } from './shared/filter.pipe';
     CartComponent,
     CartItemComponent,
     AdoptionpageItemComponent,
-    FiltersComponent,
     FilterPipe
   ],
     imports: [

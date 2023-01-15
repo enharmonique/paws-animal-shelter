@@ -24,6 +24,7 @@ export class AdoptionpageListComponent implements OnInit {
   loadProducts(){
     this.productService.getProducts().subscribe((products)  =>{
       this.productList=products;
+      this.filterCategory=products;
     })
 
     //
@@ -40,6 +41,26 @@ export class AdoptionpageListComponent implements OnInit {
   }
 
   searchKey:string="";
+
+  public filterCategory:any;
+
+  filter(category:string){
+    this.filterCategory=this.productList
+      .filter((a:any)=>{
+        if(a.category == category || category==''){
+          return a;
+        }
+      })
+  }
+
+  public searchTerm: string = '';
+
+  search(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    //console.log(this.searchTerm);
+    this.productService.search.next(this.searchTerm);
+  }
+
 
 
 

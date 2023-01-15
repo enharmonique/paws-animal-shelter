@@ -87,6 +87,9 @@
   ],
   "wishlist": [
     {
+      "id": 5
+    },
+    {
       "id": 2
     },
     {
@@ -94,6 +97,16 @@
     }
   ],
   "cart": [
+    {
+      "id": 5,
+      "product": {
+        "id": 5,
+        "name": "Toni",
+        "description": "I'm a healthy baby male and I'm looking for you to adopt me today! The shelter recommends a 45 gallon tank for me. Will you give me a forever home?",
+        "category": "turtles",
+        "imageUrl": "assets/img/5.jpg"
+      }
+    },
     {
       "id": 2,
       "product": {

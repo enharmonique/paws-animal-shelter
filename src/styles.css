@@ -17,7 +17,13 @@
     margin-left: -100px;
   }
 }
-
+@media (min-width: 768px) {
+  .col-md-1 {
+    flex: 0 0 auto;
+    width: 10.333333%;
+    margin-left: -300px;
+  }
+}
 @media (min-width: 768px) {
   .col-md-2 {
     margin-top: 80px;
