@@ -10,13 +10,14 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 })
 export class EditUserComponent implements OnInit {
   userForm!: FormGroup;
-  id!: string;
+  id!: string | null;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
+    this.id = localStorage.getItem('loggedInUserId');
     this.userForm = new FormGroup({
       'username': new FormControl(null, [Validators.required]),
       'password': new FormControl(null, [Validators.required]),
@@ -25,16 +26,11 @@ export class EditUserComponent implements OnInit {
       'description': new FormControl(null, [Validators.required]),
       'profilePicturePath': new FormControl(null, [Validators.required])
     });
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.id = params['id'];
-      }
-    );
   }
 
   onSubmit() {
     this.userService.updateUser(
-      this.id,
+      this.id!,
       {
         username: this.userForm.value['username'],
         password: this.userForm.value['password'],

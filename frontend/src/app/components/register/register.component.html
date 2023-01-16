@@ -3,54 +3,72 @@
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
       <mat-card>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="username">Username</label>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="was-validated">
+          <div class="form-floating">
             <input
               type="text"
               id="username"
               formControlName="username"
-              class="form-control">
+              class="form-control"
+              required>
+            <label for="username">Username</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
-          <div class="form-group">
-            <label for="password">Password</label>
+          <br>
+          <div class="form-floating">
             <input
               type="text"
               id="password"
               formControlName="password"
-              class="form-control">
+              class="form-control"
+              required>
+            <label for="password">Password</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
-          <div class="form-group">
-            <label for="address">Address</label>
+          <br>
+          <div class="form-floating">
             <input
               type="text"
               id="address"
               formControlName="address"
-              class="form-control">
+              class="form-control"
+              required>
+            <label for="address">Address</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
-          <div class="form-group">
-            <label for="age">Age</label>
+          <br>
+          <div class="form-floating">
             <input
               type="text"
               id="age"
               formControlName="age"
-              class="form-control">
+              class="form-control"
+              required>
+            <label for="age">Age</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <input
+          <br>
+          <div class="form-floating">
+            <textarea
               type="text"
               id="description"
               formControlName="description"
-              class="form-control">
+              class="form-control"
+              required>
+            </textarea>
+            <label for="description">Description</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
-          <div class="form-group">
-            <label for="profilePicturePath">Profile Picture Path</label>
+          <br>
+          <div class="form-floating">
             <input
               type="text"
               id="profilePicturePath"
               formControlName="profilePicturePath"
-              class="form-control">
+              class="form-control"
+              required>
+            <label for="profilePicturePath">Profile Picture Path</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <br>
           <div style="text-align: center">

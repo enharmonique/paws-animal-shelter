@@ -1,7 +1,15 @@
+.container {
+  margin-top: 100px;
+  color: black;
+}
+
 .mat-card {
   background-color: white;
   color: black;
   position: center;
   width: auto;
-  margin-bottom: 50px;
+}
+
+.button {
+  width: auto;
 }

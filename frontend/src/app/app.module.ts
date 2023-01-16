@@ -17,6 +17,9 @@ import { AddAnimalFormComponent } from './components/add-animal-form/add-animal-
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { AnimalPageComponent } from './components/animal-page/animal-page.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 const appRoutes: Routes = [
   {
@@ -34,12 +37,18 @@ const appRoutes: Routes = [
         path: 'edit', component: EditUserComponent
       },
       {
-        path: ':id', component: UserComponent
+        path: 'profile', component: UserComponent
       }
     ]
   },
   {
     path: 'events', component: EventListComponent
+  },
+  {
+    path: 'wishlist', component: WishlistComponent
+  },
+  {
+    path: 'quiz', component: QuizComponent
   },
   {
     path: 'animals',
@@ -50,6 +59,9 @@ const appRoutes: Routes = [
       {
         path: ':type', component: AnimalListComponent
       },
+      {
+        path: 'get/:id', component: AnimalPageComponent
+      }
     ]
   }
 ];
@@ -64,7 +76,10 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     AddAnimalFormComponent,
-    EditUserComponent
+    EditUserComponent,
+    AnimalPageComponent,
+    WishlistComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

@@ -3,21 +3,24 @@
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
       <mat-card>
-        <form [formGroup]="animalForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="name">Name</label>
+        <form [formGroup]="animalForm" (ngSubmit)="onSubmit()" class="was-validated">
+          <div class="form-floating">
             <input
               type="text"
               id="name"
               formControlName="name"
-              class="form-control">
+              class="form-control"
+              required>
+            <label for="name">Name</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
-          <div class="form-group">
-            <label for="type">Type</label>
+          <br>
+          <div class="form-floating">
             <select
               id="type"
               formControlName="type"
-              class="form-control">
+              class="form-select"
+              required>
               <option>CAT</option>
               <option>DOG</option>
               <option>RODENT</option>
@@ -28,38 +31,53 @@
               <option>AMPHIBIAN</option>
               <option>INSECT</option>
             </select>
+            <label for="type">Type</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
-          <div class="form-group">
-            <label for="breed">Breed</label>
+          <br>
+          <div class="form-floating">
             <input
               type="text"
               id="breed"
               formControlName="breed"
-              class="form-control">
+              class="form-control"
+              required>
+            <label for="breed">Breed</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
-          <div class="form-group">
-            <label for="age">Age</label>
+          <br>
+          <div class="form-floating">
             <input
               type="text"
               id="age"
               formControlName="age"
-              class="form-control">
+              class="form-control"
+              required>
+            <label for="age">Age</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <input
+          <br>
+          <div class="form-floating">
+            <textarea
               type="text"
               id="description"
               formControlName="description"
-              class="form-control">
+              class="form-control"
+              required>
+            </textarea>
+            <label for="description">Description</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
-          <div class="form-group">
-            <label for="imagePath">Picture Path</label>
+          <br>
+          <div class="form-floating">
             <input
               type="text"
               id="imagePath"
               formControlName="imagePath"
-              class="form-control">
+              class="form-control"
+              required>
+            <label for="imagePath">Picture Path</label>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <br>
           <div style="text-align: center">

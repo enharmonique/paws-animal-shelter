@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit{
   loggedIn: boolean = false;
   idUser: string | null;
   userLoggedIn!: User;
+
   constructor(private userService: UserService, private router: Router) {
     this.idUser = '';
     userService.user.subscribe(user => this.onUserLoggedIn(user));
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit{
 
   onUserLoggedIn(user: User) {
     this.userLoggedIn = user;
-    if (user != null) {
+    if (localStorage.getItem('loggedInUserId') != null) {
       this.idUser = localStorage.getItem('loggedInUserId');
       this.loggedIn = true;
     } else {
@@ -31,6 +32,11 @@ export class HeaderComponent implements OnInit{
     if (localStorage.getItem('loggedInUserId') != null) {
       this.loggedIn = true;
       this.idUser = localStorage.getItem('loggedInUserId');
+      this.userService.getUserById(this.idUser!).subscribe(
+        user => {
+          this.userLoggedIn = user;
+        }
+      );
     } else {
       this.loggedIn = false;
       this.idUser = '';

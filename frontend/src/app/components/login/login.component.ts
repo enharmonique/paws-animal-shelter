@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit{
         if(res.errorFlag == false){
           localStorage.setItem('loggedInUserId', res.entity.id);
           alert("Logged in successfully!");
-          this.router.navigate(['/animals/all']);
+          this.router.navigate(['users', 'profile']);
         }
     });
   }

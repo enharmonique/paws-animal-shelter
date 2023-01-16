@@ -3,26 +3,45 @@
     <a class="navbar-brand" routerLink="/animals/all">Paws Animal Shelter</a>
     <ul class="navbar-nav navbar-right">
       <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/animals/all">Animals</a></li>
-<!--      <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/quiz">Quiz</a></li>-->
+      <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/quiz">Quiz</a></li>
       <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/events">Events</a></li>
-      <button mat-icon-button
-              *ngIf="loggedIn"
-              class="text-light"
-              [routerLink]="['users', idUser]">
-        <mat-icon>person</mat-icon>
-      </button>
-      <button *ngIf="!loggedIn"
-              mat-icon-button
-              [routerLink]="['login']"
-              class="text-light">
-        <mat-icon>login</mat-icon>
-      </button>
-      <button *ngIf="loggedIn"
-              mat-icon-button
-              (click)="logout()"
-              class="text-light">
-        <mat-icon>logout</mat-icon>
-      </button>
+      <li>
+        <button mat-icon-button
+                *ngIf="loggedIn"
+                class="text-light"
+                [routerLink]="['users','profile']">
+          <mat-icon>person</mat-icon>
+          {{userLoggedIn.username}}
+        </button>
+      </li>
+      <li>
+        <button mat-icon-button
+                *ngIf="loggedIn"
+                class="text-light"
+                [routerLink]="['wishlist']">
+          <mat-icon>favorite</mat-icon>
+          Wishlist
+        </button>
+      </li>
+      <li>
+        <button *ngIf="!loggedIn"
+                mat-icon-button
+                [routerLink]="['login']"
+                class="text-light">
+          <mat-icon>login</mat-icon>
+          Sign in
+        </button>
+      </li>
+      <li>
+        <button *ngIf="loggedIn"
+                mat-icon-button
+                (click)="logout()"
+                class="text-light">
+          <mat-icon>logout</mat-icon>
+          Sign out
+        </button>
+      </li>
+
     </ul>
   </div>
 </nav>

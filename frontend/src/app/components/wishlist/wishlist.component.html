@@ -1,0 +1,19 @@
+<div class="container-fluid mt-3">
+  <div class="clo-md-6" *ngFor="let wishlistEntry of wishlist">
+    <mat-card>
+      <mat-card-title>{{wishlistEntry.animal.name}}</mat-card-title>
+      <mat-card-content>
+        <a
+          class="card-link"
+          style="color: black"
+          [routerLink]="['/animals/get', wishlistEntry.animal.id]">
+          <img
+            class="image-responsive"
+            [src]="wishlistEntry.animal.imagePath"
+            alt="{{wishlistEntry.animal.name}}"
+            style="max-width: 300px">
+        </a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

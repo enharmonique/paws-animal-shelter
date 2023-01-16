@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>{{animal.name}}</h4>
+      <p>
+        <i>
+          Breed: {{animal.breed}} <br>
+          Age: {{animal.age}} <br>
+          Date added: {{animal.dateAdded}} <br>
+        </i>
+        {{animal.description}}
+      </p>
+      <br>
+      <button
+        mat-button
+        style="background-color: #bd9469; color: #e7e3d8"
+        type="button"
+        (click)="onAdopt(animal.id!)">
+        Adopt
+      </button>
+    </div>
+    <div class="col-md-6 text-end">
+      <img
+        style="max-width: 400px; text-align: right"
+        class="image-responsive"
+        [src]="animal.imagePath"
+        alt="{{animal.name}}">
+    </div>
+  </div>
+</div>
