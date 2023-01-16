@@ -9,11 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("adoptions")
-public class AdoptionEntry {
+@Document("wishlist")
+public class WishlistEntry {
     @Id
     private String id;
-    private String idAnimal;
+    private Animal animal;
     private String idUser;
-    private String status;
 }
