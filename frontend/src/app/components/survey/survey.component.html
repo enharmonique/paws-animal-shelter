@@ -1,0 +1,143 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+<mat-card class="bg-light d-flex align-items-center justify-content-center">
+  <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()" class="was-validated">
+
+    <div class="row form-floating">
+      <p class="text-black">What is your occupation? </p>
+      <div class="form-floating">
+        <input
+          type="text"
+          id="firstQuestion"
+          formControlName="firstQuestion"
+          class="form-control"
+          required>
+        <label for="firstQuestion"></label>
+        <div class="invalid-feedback">
+          Please fill out this field.
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <br>
+    <div class="row">
+      <p class="text-black">If you are a pet owner, where did you get your pet?</p>
+      <div class="form-floating">
+        <input
+          type="text"
+          id="secondQuestion"
+          formControlName="secondQuestion"
+          class="form-control"
+          required>
+        <label for="secondQuestion"></label>
+        <div class="invalid-feedback">
+          Please fill out this field.
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+
+    <div class="row">
+      <p class="text-black">From your point of view,what is the perfect animal for children(0-5 years old) and why?</p>
+      <div class="form-floating">
+        <input
+          type="text"
+          id="thirdQuestion"
+          formControlName="thirdQuestion"
+          class="form-control"
+          required>
+        <label for="thirdQuestion"></label>
+        <div class="invalid-feedback">
+          Please fill out this field.
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+
+    <div class="row">
+      <p class="text-black">"What bothers you the most about getting a pet?"</p>
+      <div class="form-floating">
+        <input
+          type="text"
+          id="fourthQuestion"
+          formControlName="fourthQuestion"
+          class="form-control"
+          required>
+        <label for="fourthQuestion"></label>
+        <div class="invalid-feedback">
+          Please fill out this field.
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+
+    <div class="row">
+      <p class="text-black">Why do you want a pet?</p>
+      <div class="form-floating">
+        <input
+          type="text"
+          id="fifthQuestion"
+          formControlName="fifthQuestion"
+          class="form-control"
+          required>
+        <label for="fifthQuestion"></label>
+        <div class="invalid-feedback">
+          Please fill out this field.
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+
+    <div class="row">
+      <p class="text-black">What animal do you think will fit the best in your lifestyle and why? </p>
+      <div class="form-floating">
+        <input
+          type="text"
+          id="sixthQuestion"
+          formControlName="sixthQuestion"
+          class="form-control"
+          required>
+        <label for="sixthQuestion"></label>
+        <div class="invalid-feedback">
+          Please fill out this field.
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+
+    <div class="row">
+      <p class="text-black">Do you have another pets?If then yes,why you want to adopt another?</p>
+      <div class="form-floating">
+        <input
+          type="text"
+          id="seventhQuestion"
+          formControlName="seventhQuestion"
+          class="form-control"
+          required>
+        <label for="seventhQuestion"></label>
+        <div class="invalid-feedback">
+          Please fill out this field.
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+    <div style="text-align: center">
+    <button class="mat-raised-button" type="submit"> Submit</button>
+    </div>
+  </form>
+
+
+</mat-card>
+
+    </div>
+  </div>
+
+

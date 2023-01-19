@@ -4,15 +4,18 @@
 
     <div class="col-md-8">
       <mat-card>
-        <form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
-          <div class="form-floating" *ngFor="let quiz of quizList">
+        <form [formGroup]="quizForm" (ngSubmit)="onSubmit()" >
+          <div class="form-floating"  *ngFor="let quiz of quizList" >
             <select
               id="option"
-              formControlName="question1"
+              formControlName = "question"
               class="form-select">
+              <option value="" disabled selected> </option>
               <option
-                *ngFor="let option of quiz.options">
-                {{option}}</option>
+                *ngFor="let option of quiz.options" [value]="option" >
+                {{option}}
+
+              </option>
             </select>
             <label for="option">{{quiz.question}}</label>
             <br>

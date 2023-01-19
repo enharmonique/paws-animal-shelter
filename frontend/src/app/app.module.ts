@@ -20,6 +20,11 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AnimalPageComponent } from './components/animal-page/animal-page.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { QuizResultsComponent} from "./components/quiz-results/quiz-results.component";
+import { SurveyComponent } from './components/survey/survey.component';
+import { MatSelectModule } from '@angular/material';
+import { DonationsComponent } from './components/donations/donations.component';
 
 const appRoutes: Routes = [
   {
@@ -51,6 +56,15 @@ const appRoutes: Routes = [
     path: 'quiz', component: QuizComponent
   },
   {
+    path : 'donations',component: DonationsComponent
+  },
+  {
+    path : 'survey',component: SurveyComponent
+  },
+  {
+    path : 'quizResult', component : QuizResultsComponent
+  },
+  {
     path: 'animals',
     children: [
       {
@@ -79,7 +93,11 @@ const appRoutes: Routes = [
     EditUserComponent,
     AnimalPageComponent,
     WishlistComponent,
-    QuizComponent
+    QuizComponent,
+    FooterComponent,
+    QuizResultsComponent,
+    SurveyComponent,
+    DonationsComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +108,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   exports: [
     RouterModule

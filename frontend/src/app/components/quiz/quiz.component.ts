@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Quiz} from "../../model/quiz.model";
-import {FormControl, FormGroup} from "@angular/forms";
-
+import {FormArray, FormControl, FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -62,23 +62,29 @@ export class QuizComponent implements OnInit {
   ];
   quizForm!: FormGroup;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.quizForm = new FormGroup({
-      'question': new FormControl(null),
+      'question' : new FormControl(null),
+       // 'answer' : new FormControl(null)
     });
   }
 
-  getOptions(id: string) {
-    return this.quizList[+id].options;
-  }
-
-  getQuestion(id: string) {
-    return this.quizList[+id].question;
+  // getOptions() {
+  //   return this.quizForm.controls['answers'] as FormArray;
+  // }
+  //
+  getQuestion() {
+    return this.quizForm.controls['questions'] as FormArray;
   }
 
   onSubmit() {
-
+    console.log(this.quizForm.value)
+    console.log({
+      questions : [this.quizForm.getRawValue()]
+    //   answers : [this.getOptions()],
+    })
+    this.router.navigate(['/quizResult']);
   }
 }
