@@ -13,3 +13,12 @@
 .button {
   width: auto;
 }
+
+.optionButton {
+  font-size: 20px;
+  padding: 20px;
+  margin: 30px;
+  background-color: #f3ab41;
+  color: white;
+  width: 300px;
+}

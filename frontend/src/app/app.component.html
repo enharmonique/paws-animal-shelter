@@ -1,6 +1,9 @@
 <app-header></app-header>
-<div class="container">
+<div class="container" *ngIf="!homepage">
   <div class="row">
       <router-outlet></router-outlet>
   </div>
+</div>
+<div *ngIf="homepage">
+  <router-outlet></router-outlet>
 </div>

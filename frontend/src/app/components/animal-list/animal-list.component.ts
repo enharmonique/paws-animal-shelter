@@ -16,7 +16,8 @@ export class AnimalListComponent implements OnInit {
   animals: Animal[] = [];
   wishlist: WishlistEntry[] = [];
   type!: string;
-  favBtnEnabled = false;
+  searchString!: string;
+  areAnimals = true;
 
   constructor(private animalService: AnimalService,
               private adoptionService: AdoptionService,
@@ -29,34 +30,48 @@ export class AnimalListComponent implements OnInit {
     this.id = localStorage.getItem('loggedInUserId');
     this.route.params.subscribe(
       (params: Params) => {
-        this.type = params['type'];
-        if (this.type != 'all') {
-          this.animalService.getAnimalsByType(this.type).subscribe(
+        if (params['type']) {
+          this.type = params['type'];
+          if (this.type != 'all') {
+            this.animalService.getAnimalsByType(this.type).subscribe(
+              animals => {
+                this.animals = animals;
+              }
+            );
+          } else {
+            this.animalService.getAnimals().subscribe(
+              animals => {
+                this.animals = animals;
+              }
+            );
+          }
+        } else if (params['search']) {
+          this.searchString = params['search'];
+          this.animalService.getAnimalsBySearch(this.searchString).subscribe(
             animals => {
               this.animals = animals;
-              console.log(animals);
-            }
-          );
-        } else {
-          this.animalService.getAnimals().subscribe(
-            animals => {
-              this.animals = animals;
-              console.log(animals);
+              if (this.animals.length > 0) {
+                this.areAnimals = true;
+              } else {
+                this.areAnimals = false;
+              }
             }
           );
         }
       }
     );
-    this.wishlistService.getWishlistByUserId(this.id!).subscribe(
-      wishlistEntries => {
-        this.wishlist = wishlistEntries;
-      }
-    );
+    if (this.id != null) {
+      this.wishlistService.getWishlistByUserId(this.id!).subscribe(
+        wishlistEntries => {
+          this.wishlist = wishlistEntries;
+        }
+      );
+    }
   }
 
   onFavorite(animal: Animal) {
     for (let wishlistEntry of this.wishlist) {
-      if (wishlistEntry.animal.id == animal.id) {
+      if (wishlistEntry.idAnimal == animal.id) {
         return true;
       }
     }
@@ -65,7 +80,7 @@ export class AnimalListComponent implements OnInit {
 
   getWishlistEntryByAnimalId(id: String) {
     for (let wishlistEntry of this.wishlist) {
-      if (wishlistEntry.animal.id == id) {
+      if (wishlistEntry.idAnimal == id) {
         return wishlistEntry.id;
       }
     }
@@ -76,10 +91,9 @@ export class AnimalListComponent implements OnInit {
     this.wishlistService.addWishlistEntry(
       {
         idUser: localStorage.getItem('loggedInUserId'),
-        animal: animal,
+        idAnimal: animal.id!,
       }
     ).subscribe();
-    alert("Animal added to wishlist successfully!");
     window.location.reload()
   }
 
@@ -88,7 +102,6 @@ export class AnimalListComponent implements OnInit {
       let id = this.getWishlistEntryByAnimalId(animal.id!);
       if (id != null) {
         this.wishlistService.deleteWishlistEntry(id).subscribe();
-        alert("Animal was deleted from wishlist successfully!");
         window.location.reload()
       }
     }

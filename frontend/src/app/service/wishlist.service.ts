@@ -14,7 +14,7 @@ export class WishlistService{
   }
 
   public addWishlistEntry(wishlistEntry: WishlistEntry): Observable<any> {
-    return this.http.post(this.wishlistUrl+'/add', wishlistEntry).pipe(
+    return this.http.post(this.wishlistUrl+'/add/', wishlistEntry).pipe(
       map((res: any) => {
         return res
       })
@@ -22,7 +22,7 @@ export class WishlistService{
   }
 
   public deleteWishlistEntry(id: String): Observable<any> {
-    return this.http.delete(this.wishlistUrl+'/'+id).pipe(
+    return this.http.delete(this.wishlistUrl+'/delete/'+id).pipe(
       map((res: any) => {
         return res
       })

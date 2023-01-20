@@ -1,19 +1,40 @@
 <div class="container-fluid mt-3">
-  <div class="clo-md-6" *ngFor="let wishlistEntry of wishlist">
-    <mat-card>
-      <mat-card-title>{{wishlistEntry.animal.name}}</mat-card-title>
-      <mat-card-content>
-        <a
-          class="card-link"
-          style="color: black"
-          [routerLink]="['/animals/get', wishlistEntry.animal.id]">
-          <img
-            class="image-responsive"
-            [src]="wishlistEntry.animal.imagePath"
-            alt="{{wishlistEntry.animal.name}}"
-            style="max-width: 300px">
-        </a>
-      </mat-card-content>
-    </mat-card>
+  <div class="row" style="margin-top: 50px" *ngIf="!wishlistEmpty; else noWishlistEntries">
+    <h3 style="text-align: center; color: #4e8cf2">My wishlist <img src="assets/icons/heart.png"></h3>
+    <div class="col-md-4" *ngFor="let animal of animals">
+      <mat-card>
+        <mat-card-title style="color: #4e8cf2; font-family: fantasy;">
+          {{animal.name}}
+          <div style="float: right;">
+            <button
+              class="btn btn-default"
+              type="button"
+              (click)="removeFromWishlist(animal)">
+              <mat-icon [ngStyle]="{'color':'#4e8cf2'}">delete_outline</mat-icon>
+            </button>
+          </div>
+        </mat-card-title>
+        <mat-card-content>
+          <a
+            class="card-link"
+            style="color: black"
+            [routerLink]="['/animals/get', animal.id]">
+            <img
+              class="center"
+              [src]="animal.imagePath"
+              alt="{{animal.name}}">
+          </a>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
+
+  <ng-template #noWishlistEntries>
+    <div class="row text-center" style="padding: 100px">
+      <img src="assets/icons/no-wishlist.jpg" style="width: 500px; margin: auto">
+      <h1 style="color: #4e8cf2">Ooops...!</h1>
+      <p style="color: #95baf7">Your wishlist is currently empty</p>
+    </div>
+  </ng-template>
+
 </div>

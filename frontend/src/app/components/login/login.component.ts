@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit{
   constructor(private userService: UserService, private router: Router){}
 
   onSubmit() {
-    console.log(this.loginForm);
     this.userService.loginUser(
       {
         username: this.loginForm.value['username'],
@@ -27,8 +26,12 @@ export class LoginComponent implements OnInit{
         if(res.errorFlag == false){
           localStorage.setItem('loggedInUserId', res.entity.id);
           alert("Logged in successfully!");
-          this.router.navigate(['users', 'profile']);
+          this.router.navigate(['animals', 'all']).then(r => window.location.reload());
+        } else {
+          alert("Your login credentials don't match an account in our system!");
+          this.loginForm.reset();
         }
     });
   }
+
 }

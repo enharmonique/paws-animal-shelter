@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-4"></div>
     <div class="col-sm-4">
-      <mat-card>
+      <img src="assets/icons/sign-in1.png" style="width: 500px">
+    </div>
+    <div class="col-sm-4" style="text-align: center; padding-top: 50px">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="was-validated">
           <div class="form-floating">
             <input
@@ -13,9 +14,7 @@
               placeholder="Enter username"
               required>
             <label for="username">Username</label>
-            <div class="invalid-feedback">
-              Please fill out this field.
-            </div>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <br>
           <div class="form-floating">
@@ -30,15 +29,16 @@
           </div>
           <br>
           <div style="text-align: center">
-            <button class="btn btn-outline-primary text-dark" type="submit">Log In</button>
+            <button mat-button style="background-color: #f3ab41; color: white;" type="submit">Log In</button>
           </div>
         </form>
-        <br>
-        <p>
-          Don't have an account?
-          <a class="btn btn-outline-light text-dark" routerLink="/register">Register</a>
-        </p>
-      </mat-card>
+      <br>
+      <h3 style="color: #4e8cf2">New here?</h3>
+      <p style="color: #95baf7">Sign up and discover a great amount of new opportunites!</p>
+      <a style="color: #f3ab41;" routerLink="/register">Sign up</a>
+    </div>
+    <div class="col-sm-4">
+      <img src="assets/icons/sign-in2.jpg" style="height: 500px">
     </div>
   </div>
 </div>

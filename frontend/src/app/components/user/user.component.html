@@ -4,24 +4,56 @@
       <img [src]="user.profilePicturePath" alt="{{user.username}}" style="max-width: 300px">
     </div>
     <div class="col-sm-6">
-      <h3><strong>{{user.username}}</strong></h3>
-      <h4>Address: <i>{{user.address}}</i></h4>
-      <h4>Age: {{user.age}}</h4>
-      <h5><i>{{user.description}}</i></h5>
+      <h3 style="color: #4e8cf2; font-family: fantasy;">{{user.username}}</h3>
+      <div style="color: #95baf7">
+        <h4>Address: <i>{{user.address}}</i></h4>
+        <h4>Age: {{user.age}}</h4>
+        <h5><i>{{user.description}}</i></h5>
+      </div>
+      <button mat-button type="button"
+              style="background-color: #f3ab41; color: white; float: right"
+              (click)="goToEditProfile()">
+        <mat-icon>edit</mat-icon>
+        Edit account
+      </button>
     </div>
   </div>
   <hr>
-  <div class="row">
-    <p>
-      <a class="btn btn-outline-primary text-dark" [routerLink]="['/animals/add']">Put up for adoption</a>
-<!--      <a class="btn btn-outline-primary text-dark" [routerLink]="['/events/add']">Create an event</a>-->
-      <a class="btn btn-outline-primary text-dark" [routerLink]="['/users/edit']">Edit account</a>
-    </p>
-  </div>
-  <hr>
-  <p><i>All Your Adoptions</i></p>
-  <div class="row" *ngFor="let adoption of adoptions">
-    <p>id_animal: {{adoption.idAnimal}}, status: {{adoption.status}}</p>
-  </div>
+  <p style="color: #4e8cf2">
+    <button mat-button type="button"
+            style="background-color: #f3ab41; color: white; float: right"
+            (click)="goToAddAnimal()">
+      <mat-icon>add_circle_outline</mat-icon>
+      Put up for adoption
+    </button>
+  </p>
 
+  <div class="container mt-3">
+    <h2 style="color: #4e8cf2">All Your Adoptions</h2>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Breed</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let animal of animals" [routerLink]="['/animals/get', animal.id]">
+        <td>{{animal.name}}</td>
+        <td>{{animal.type}}</td>
+        <td>{{animal.breed}}</td>
+        <td>pending</td>
+        <button
+          class="btn btn-default"
+          type="button"
+          (click)="removeFromAdoptions(animal)">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

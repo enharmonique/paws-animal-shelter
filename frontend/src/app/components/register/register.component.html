@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-4"></div>
     <div class="col-sm-4">
-      <mat-card>
+      <img src="assets/icons/register2.jpg" style="width: 500px">
+    </div>
+    <div class="col-sm-4" style="text-align: center; padding-bottom: 10px">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="was-validated">
           <div class="form-floating">
             <input
@@ -17,7 +18,7 @@
           <br>
           <div class="form-floating">
             <input
-              type="text"
+              type="password"
               id="password"
               formControlName="password"
               class="form-control"
@@ -72,10 +73,12 @@
           </div>
           <br>
           <div style="text-align: center">
-            <button class="btn btn-outline-primary text-dark" type="submit">Register</button>
+            <button mat-button type="submit" style="background-color: #f3ab41; color: white">Register</button>
           </div>
         </form>
-      </mat-card>
+    </div>
+    <div class="col-sm-4">
+      <img src="assets/icons/register1.jpg" style="width: 500px">
     </div>
   </div>
 </div>

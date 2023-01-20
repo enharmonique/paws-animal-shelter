@@ -2,6 +2,35 @@
   background-color: white;
   color: black;
   position: center;
-  width: auto;
-  margin-bottom: 50px;
+  margin: 30px;
+  width: 230px;
+  height: 230px;
 }
+
+.img {
+  width: 30px;
+}
+
+.button {
+  text-align: right;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 150px;
+}
+
+.nav-link {
+  color:#4e8cf2;
+  font-weight: bold;
+  /*color:#f2b44e;*/
+}
+
+/*.h3 {*/
+/*  color: #4e8cf2;*/
+/*  //f2b44e*/
+/*}*/
+

@@ -12,11 +12,11 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   ngOnInit(): void {
     this.registerForm = new FormGroup({
-      'username': new FormControl(null, [Validators.required]),
+      'username': new FormControl('Enter a username', [Validators.required]),
       'password': new FormControl(null, [Validators.required]),
-      'address': new FormControl(null, [Validators.required]),
-      'age': new FormControl(null, [Validators.required]),
-      'description': new FormControl(null, [Validators.required]),
+      'address': new FormControl('address', [Validators.required]),
+      'age': new FormControl(0, [Validators.required]),
+      'description': new FormControl('description...', [Validators.required]),
       'profilePicturePath': new FormControl(null, [Validators.required])
     });
   }
@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.registerForm);
     this.userService.registerUser(
       {
         username: this.registerForm.value['username'],
@@ -36,7 +35,11 @@ export class RegisterComponent implements OnInit {
       }).subscribe((res) => {
       if(res.errorFlag == false){
         localStorage.clear();
-        this.router.navigate(['/login']);
+        alert("You are sign up! Please log in!");
+        this.router.navigate(['/login']).then(r => window.location.reload());
+      } else {
+        alert("Some of the fields are incorrect!");
+        this.registerForm.reset();
       }
     });
   }

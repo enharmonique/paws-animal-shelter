@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h4>{{animal.name}}</h4>
-      <p>
+      <h4 style="color: #4e8cf2; font-family: fantasy;">{{animal.name}}</h4>
+      <p style="color: #95baf7">
         <i>
           Breed: {{animal.breed}} <br>
           Age: {{animal.age}} <br>
@@ -11,13 +11,18 @@
         {{animal.description}}
       </p>
       <br>
-      <button
-        mat-button
-        style="background-color: #bd9469; color: #e7e3d8"
-        type="button"
-        (click)="onAdopt(animal.id!)">
-        Adopt
-      </button>
+
+      <div *ngIf="id" style="float: right;">
+        <button
+          *ngIf="loggedInUserId"
+          mat-button
+          style="background-color: #f3ab41; color: white"
+          type="button"
+          (click)="onAdopt(animal.id!)">
+          Adopt
+        </button>
+      </div>
+
     </div>
     <div class="col-md-6 text-end">
       <img

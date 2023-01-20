@@ -1,48 +1,69 @@
 <div class="container-fluid mt-3">
   <div class="row">
+
     <div class="col-md-2">
       <nav class="navbar bg-light">
         <div class="container-fluid">
-          <h3>Categories</h3>
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" routerLink="/animals/all">All</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/animals/DOG">Dogs</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/animals/CAT">Cats</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/animals/RODENT">Rodents</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/animals/BIRD">Birds</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/animals/REPTILE">Reptiles</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/animals/EQUINE">Equines</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/animals/FISH">Fish</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/animals/AMPHIBIAN">Amphibians</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/animals/INSECT">Insects</a></li>
+          <ul class="navbar-nav fixed-top" style="margin-top: 100px; margin-left: 30px; width: 200px">
+            <h3 style="color: #4e8cf2"><u>Categories</u></h3>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/animals/all"><img src="assets/icons/all.png"> All</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/animals/DOG"><img src="assets/icons/dog.png"> Dogs</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/animals/CAT"><img src="assets/icons/cat.png"> Cats</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/animals/RODENT"><img src="assets/icons/rodent.png"> Rodents</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/animals/BIRD"><img src="assets/icons/bird.png"> Birds</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/animals/REPTILE"><img src="assets/icons/reptile.png"> Reptiles</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/animals/EQUINE"><img src="assets/icons/equine.png"> Equines</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/animals/FISH"><img src="assets/icons/fish.png"> Fish</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/animals/AMPHIBIAN"><img src="assets/icons/amphibian.png"> Amphibians</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/animals/INSECT"><img src="assets/icons/insect.png"> Insects</a>
+            </li>
           </ul>
         </div>
       </nav>
     </div>
 
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-6" *ngFor="let animal of animals">
+    <div class="col-md-10">
+      <div class="row" *ngIf="areAnimals; else noAnimals">
+        <div class="col-md-3" *ngFor="let animal of animals">
           <mat-card>
-            <mat-card-title>
+            <mat-card-title style="color: #4e8cf2; font-family: fantasy;">
               {{animal.name}}
-              <button
-                class="btn btn-default"
-                type="button"
-                style="float: right;"
-                (click)="onAddToWishlist(animal)"
-                *ngIf="!onFavorite(animal); else enabled">
-                <mat-icon [ngStyle]="{'color':'grey'}">favorite</mat-icon>
-              </button>
-              <ng-template #enabled>
+              <div *ngIf="id" style="float: right;">
                 <button
                   class="btn btn-default"
                   type="button"
-                  style="float: right;"
-                  (click)="onDeleteWishlistEntry(animal)">
-                  <mat-icon [ngStyle]="{'color':'red'}">favorite</mat-icon>
+                  (click)="onAddToWishlist(animal)"
+                  *ngIf="!onFavorite(animal); else enabled">
+                  <mat-icon [ngStyle]="{'color':'grey'}">favorite</mat-icon>
                 </button>
-              </ng-template>
+                <ng-template #enabled>
+                  <button
+                    class="btn btn-default"
+                    type="button"
+                    (click)="onDeleteWishlistEntry(animal)">
+                    <mat-icon [ngStyle]="{'color':'#ffa019'}">favorite</mat-icon>
+                  </button>
+                </ng-template>
+              </div>
             </mat-card-title>
             <mat-card-content>
               <a
@@ -50,15 +71,22 @@
                 style="color: black"
                 [routerLink]="['/animals/get', animal.id]">
                 <img
-                  class="image-responsive"
+                  class="center"
                   [src]="animal.imagePath"
-                  alt="{{animal.name}}"
-                  style="max-width: 300px">
+                  alt="{{animal.name}}">
               </a>
             </mat-card-content>
           </mat-card>
         </div>
       </div>
+
+      <ng-template #noAnimals>
+        <div class="row text-center" style="padding: 50px">
+          <img src="assets/no-results.png" style="width: 500px; margin: auto">
+          <h1 style="color: #4e8cf2">Sad no results</h1>
+          <p style="color: #95baf7">We cannot find the item you are searching for, maybe a little spelling mistake?</p>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

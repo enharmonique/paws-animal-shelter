@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {User} from "../../model/user.model";
+import {AnimalService} from "../../service/animal.service";
+import {FormControl, FormGroup} from "@angular/forms";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,9 +13,14 @@ export class HeaderComponent implements OnInit{
   loggedIn: boolean = false;
   idUser: string | null;
   userLoggedIn!: User;
+  searchForm!: FormGroup;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private animalsService: AnimalService,
+    private router: Router) {
     this.idUser = '';
+    this.userLoggedIn = new User();
     userService.user.subscribe(user => this.onUserLoggedIn(user));
   }
 
@@ -29,6 +36,10 @@ export class HeaderComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.searchForm = new FormGroup({
+      'searchString': new FormControl(null)
+    });
+
     if (localStorage.getItem('loggedInUserId') != null) {
       this.loggedIn = true;
       this.idUser = localStorage.getItem('loggedInUserId');
@@ -46,7 +57,11 @@ export class HeaderComponent implements OnInit{
   logout() {
     localStorage.clear();
     this.loggedIn = false;
-    alert("Logged out successfully!");
-    this.router.navigate(['/animals/all']);
+    this.router.navigate(['/animals/all']).then(r => window.location.reload());
+  }
+
+  onSubmit() {
+    let searchString = this.searchForm.value['searchString'];
+    this.router.navigate(['animals', 'search', searchString]).then(r => window.location.reload());
   }
 }

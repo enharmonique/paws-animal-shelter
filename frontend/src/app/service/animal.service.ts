@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import {EventEmitter, Injectable} from "@angular/core";
 import {tap, Observable, map} from "rxjs";
 import {Animal} from "../model/animal.model";
 
@@ -8,26 +8,32 @@ import {Animal} from "../model/animal.model";
 })
 export class AnimalService {
   private animalsUrl: string;
+  public onSearchAnimals: EventEmitter<string>;
 
   constructor(private http: HttpClient) {
     this.animalsUrl = 'http://localhost:8080/animals';
+    this.onSearchAnimals = new EventEmitter<string>();
   }
 
   public getAnimals(): Observable<Animal[]> {
-    return this.http.get<Animal[]>(this.animalsUrl).pipe(
-      tap(data => console.log(data))
-    );
+    return this.http.get<Animal[]>(this.animalsUrl).pipe();
   }
 
   public getAnimalsByType(type: string): Observable<Animal[]> {
     return this.http.get<Animal[]>(this.animalsUrl+'/type/'+type).pipe(
-      tap(data => console.log(data))
+      // tap(data => console.log(data))
+    );
+  }
+
+  public getAnimalsBySearch(searchString: string): Observable<Animal[]> {
+    return this.http.get<Animal[]>(this.animalsUrl+'/search/'+searchString).pipe(
+      // tap(data => console.log(data))
     );
   }
 
   public getAnimalById(id: string): Observable<Animal> {
     return this.http.get<Animal>(this.animalsUrl+'/'+id).pipe(
-      tap(data => console.log(data))
+      // tap(data => console.log(data))
     );
   }
 

@@ -1,27 +1,43 @@
 <div class="container-fluid mt-3">
   <div class="row">
-    <div class="col-md-6" *ngFor="let event of events">
-      <div class="card">
-        <img class="card-img-top" [src]="event.imagePath" alt="{{event.name}}">
-        <div class="card-body">
-          <h4 class="card-title">{{event.name}}</h4>
-          <p class="card-text">
-            <i>
+    <div class="col-md-4" *ngFor="let event of events">
+      <mat-card>
+        <mat-card-title style="color: #4e8cf2">
+          <img class="center" [src]="event.imagePath" alt="{{event.name}}">
+          {{event.name}}
+        </mat-card-title>
+        <mat-card-content>
+          <p>
+            <i style="color: #4e8cf2">
               {{event.location}} <br>
               {{event.date}} <br>
-              Number of participants: {{event.noParticipants}}
             </i>
-            {{event.description}} <br>
-            <i>Number of participants: {{event.noParticipants}}</i>
+            <small style="color: #95baf7">{{event.description}}</small> <br>
+            <i style="color: #4e8cf2">Number of participants: {{event.noParticipants}}</i>
           </p>
-          <button
-            class="btn btn-success"
-            type="button"
-            (click)="onAttend()">
-            Attend
-          </button>
-        </div>
-      </div>
+          <div *ngIf="loggedInUserId">
+            <button
+              *ngIf="!hasAttended(event); else undoAttend"
+              mat-button
+              type="button"
+              style="background-color: #f3ab41; color: white"
+              (click)="onAttend(event)">
+              Attend
+            </button>
+            <ng-template #undoAttend>
+              <button
+                mat-button
+                type="button"
+                style="background-color: #f3ab41; color: white"
+                (click)="onUnattend(event)">
+                Unattend
+              </button>
+            </ng-template>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </div>
+

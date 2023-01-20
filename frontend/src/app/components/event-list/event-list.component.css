@@ -1,6 +1,16 @@
-.card {
-  max-width: 400px;
-  margin-bottom: 30px;
-  background: #decca6;
-  color: #381d0a;
+.mat-card {
+  background-color: white;
+  color: black;
+  position: center;
+  margin: 30px;
+  width: 400px;
+  height: 600px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 200px;
 }

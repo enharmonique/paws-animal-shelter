@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Quiz} from "../../model/quiz.model";
 import {FormControl, FormGroup} from "@angular/forms";
+import {QuizResults} from "../../model/quizResults.model";
 
 @Component({
   selector: 'app-quiz',
@@ -11,7 +12,7 @@ export class QuizComponent implements OnInit {
     quizList: Quiz[] = [
     {
       id: '1',
-      question: "Where do you live?",
+      question: "How much free time do you have per week?",
       options: ['apartment', 'house with a big yard', 'house with a small yard']
     },
     {
@@ -61,6 +62,22 @@ export class QuizComponent implements OnInit {
     },
   ];
   quizForm!: FormGroup;
+  questionIndex = 0;
+  question!: string;
+  options!: string[];
+  startQuiz = false;
+  finishedQuiz = false;
+  result: QuizResults[] = [
+    {animal: 'big dog', points: 0},
+    {animal: 'bird', points: 0},
+    {animal: 'turtle', points: 0},
+    {animal: 'cat with fur', points: 0},
+    {animal: 'cat without fur', points: 0},
+    {animal: 'hamster', points: 0},
+    {animal: 'fish', points: 0},
+    {animal: 'lizard', points: 0},
+    {animal: 'small dog', points: 0}
+  ];
 
   constructor() { }
 
@@ -68,17 +85,269 @@ export class QuizComponent implements OnInit {
     this.quizForm = new FormGroup({
       'question': new FormControl(null),
     });
+    this.question = this.quizList[0].question;
+    this.options = this.quizList[0].options;
+    this.questionIndex++;
   }
 
-  getOptions(id: string) {
-    return this.quizList[+id].options;
+  getOptionIndex(option: string, id: number) {
+    id--;
+    let quizItem = this.quizList[id];
+    for (let i=0; i<quizItem.options.length; i++) {
+      console.log(option+' '+id+' '+quizItem.options[i]);
+      if (quizItem.options[i] === option) {
+
+        return i;
+      }
+    }
+    return 0;
   }
 
-  getQuestion(id: string) {
-    return this.quizList[+id].question;
+  onNextQuestion(option: string) {
+    if (this.questionIndex < this.quizList.length) {
+      let quizItem = this.quizList[+this.questionIndex];
+      let optionIndex = this.getOptionIndex(option, this.questionIndex);
+      this.question = quizItem.question;
+      this.options = quizItem.options;
+
+      console.log(this.questionIndex+'\n'+this.question+'\n'+this.options+'\n'+optionIndex);
+
+      switch (quizItem.id) {
+        case '1': {
+          if (optionIndex == 0) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+            this.result[8].points++;
+          } else if (optionIndex == 1) {
+            this.result[0].points++;
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+            this.result[8].points++;
+          } else if (optionIndex == 2) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+            this.result[8].points++;
+          }
+          break;
+        }
+        case '2': {
+          if (optionIndex == 0) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+          } else if (optionIndex == 1) {
+            this.result[8].points++;
+          } else if (optionIndex == 2) {
+            this.result[0].points++;
+          } else if (optionIndex == 3) {
+            this.result[3].points++;
+            this.result[4].points++;
+          }
+          break;
+        }
+        case '3': {
+          if (optionIndex == 0) {
+            this.result[0].points++;
+            this.result[8].points++;
+          } else if (optionIndex == 1) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+          } else if (optionIndex == 2) {
+            this.result[3].points++;
+            this.result[4].points++;
+          }
+          break;
+        }
+        case '4': {
+          if (optionIndex == 0) {
+            this.result[0].points++;
+            this.result[8].points++;
+          } else if (optionIndex == 1) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+          }
+          break;
+        }
+        case '5': {
+          if (optionIndex == 0) {
+            this.result[0].points++;
+            this.result[2].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+            this.result[8].points++;
+          } else if (optionIndex == 1) {
+            this.result[2].points++;
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[5].points++;
+            this.result[7].points++;
+          } else if (optionIndex == 2) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+          } else if (optionIndex == 3) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+          } else if (optionIndex == 4) {
+            this.result[0].points++;
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+            this.result[8].points++;
+          }
+          break;
+        }
+        case '6': {
+          if (optionIndex == 0) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+          } else if (optionIndex == 1) {
+            this.result[0].points++;
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+            this.result[8].points++;
+          } else if (optionIndex == 2) {
+            this.result[0].points++;
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[8].points++;
+          }
+          break;
+        }
+        case '7': {
+          if (optionIndex == 0) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+          } else if (optionIndex == 1) {
+            this.result[0].points++;
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+            this.result[8].points++;
+          } else if (optionIndex == 2) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[3].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+          } else if (optionIndex == 3) {
+            this.result[2].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+          }
+          break;
+        }
+        case '8': {
+          if (optionIndex == 0) {
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[8].points++;
+          } else if (optionIndex == 1) {
+            this.result[0].points++;
+          } else if (optionIndex == 2) {
+            this.result[1].points++;
+            this.result[3].points++;
+            this.result[4].points++;
+            this.result[5].points++;
+            this.result[8].points++;
+          }
+          break;
+        }
+        case '9': {
+          let optionIndex = this.getOptionIndex(option, this.questionIndex);
+          if (optionIndex == 0) {
+            this.result[3].points++;
+            this.result[4].points++;
+          } else if (optionIndex == 1) {
+            this.result[0].points++;
+            this.result[8].points++;
+          } else if (optionIndex == 2) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[5].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+          }
+          break;
+        }
+        case '10': {
+          let optionIndex = this.getOptionIndex(option, this.questionIndex);
+          if (optionIndex == 0) {
+            this.result[0].points = 0;
+            this.result[3].points = 0;
+            this.result[5].points = 0;
+            this.result[8].points = 0;
+          } else if (optionIndex == 1) {
+            this.result[1].points++;
+            this.result[2].points++;
+            this.result[4].points++;
+            this.result[6].points++;
+            this.result[7].points++;
+          }
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+      this.questionIndex++;
+    } else {
+      this.finishedQuiz = true;
+    }
   }
 
-  onSubmit() {
-
+  onStartQuiz() {
+    this.startQuiz = true;
   }
 }

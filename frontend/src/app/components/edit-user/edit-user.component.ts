@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../service/user.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import {User} from "../../model/user.model";
 
 @Component({
   selector: 'app-edit-user',
@@ -11,34 +12,43 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 export class EditUserComponent implements OnInit {
   userForm!: FormGroup;
   id!: string | null;
+  loggedInUser: User;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+    this.loggedInUser = new User();
+  }
 
   ngOnInit(): void {
     this.id = localStorage.getItem('loggedInUserId');
-    this.userForm = new FormGroup({
-      'username': new FormControl(null, [Validators.required]),
-      'password': new FormControl(null, [Validators.required]),
-      'address': new FormControl(null, [Validators.required]),
-      'age': new FormControl(null, [Validators.required]),
-      'description': new FormControl(null, [Validators.required]),
-      'profilePicturePath': new FormControl(null, [Validators.required])
+    this.userService.getUserById(this.id!).subscribe(
+      user => {
+      this.loggedInUser = user;
+        this.userForm = new FormGroup({
+          'username': new FormControl(this.loggedInUser.username, [Validators.required]),
+          'password': new FormControl(null, [Validators.required]),
+          'address': new FormControl(this.loggedInUser.address, [Validators.required]),
+          'age': new FormControl(this.loggedInUser.age, [Validators.required]),
+          'description': new FormControl(this.loggedInUser.description, [Validators.required]),
+          'profilePicturePath': new FormControl(this.loggedInUser.profilePicturePath, [Validators.required])
+        });
     });
   }
 
   onSubmit() {
-    this.userService.updateUser(
-      this.id!,
-      {
-        username: this.userForm.value['username'],
-        password: this.userForm.value['password'],
-        age: this.userForm.value['age'],
-        description: this.userForm.value['description'],
-        profilePicturePath: this.userForm.value['profilePicturePath']
-      }).subscribe();
-    this.router.navigate(['/animals/all']);
+    if (this.userForm.valid) {
+      this.loggedInUser.username = this.userForm.value['username'];
+      this.loggedInUser.password = this.userForm.value['password'];
+      this.loggedInUser.age = this.userForm.value['age'];
+      this.loggedInUser.description = this.userForm.value['description'];
+      this.loggedInUser.profilePicturePath = this.userForm.value['profilePicturePath'];
+      this.userService.updateUser(this.id!,this.loggedInUser).subscribe();
+      alert("Your profile details are saved!");
+      this.router.navigate(['users', 'profile']).then(r => window.location.reload());
+    } else {
+      alert("Your profile details are incorrect!");
+    }
   }
 
 }

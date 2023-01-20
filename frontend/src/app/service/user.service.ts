@@ -22,9 +22,7 @@ export class UserService {
   // }
 
   public getUserById(id: string): Observable<User> {
-    return this.http.get<User>(this.usersUrl + '/' + id).pipe(
-      tap(data => console.log(data))
-    );
+    return this.http.get<User>(this.usersUrl + '/' + id).pipe();
   }
 
   public loginUser(user: User): Observable<any> {

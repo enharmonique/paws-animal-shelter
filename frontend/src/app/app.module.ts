@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
 import {AppComponent} from './app.component';
 import {UserComponent} from './components/user/user.component';
 import {EventListComponent} from './components/event-list/event-list.component';
@@ -20,6 +21,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AnimalPageComponent } from './components/animal-page/animal-page.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 const appRoutes: Routes = [
   {
@@ -51,10 +53,16 @@ const appRoutes: Routes = [
     path: 'quiz', component: QuizComponent
   },
   {
+    path: 'home', component: HomePageComponent
+  },
+  {
     path: 'animals',
     children: [
       {
         path: 'add', component: AddAnimalFormComponent
+      },
+      {
+        path: 'search/:search', component: AnimalListComponent
       },
       {
         path: ':type', component: AnimalListComponent
@@ -79,7 +87,8 @@ const appRoutes: Routes = [
     EditUserComponent,
     AnimalPageComponent,
     WishlistComponent,
-    QuizComponent
+    QuizComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +99,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule
   ],
   exports: [
     RouterModule

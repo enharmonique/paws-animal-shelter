@@ -1,6 +1,26 @@
-<nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark" style="background-color: #f3ab41">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/animals/all">Paws Animal Shelter</a>
+    <a class="navbar-brand" routerLink="/home"
+       style="text-shadow: 2px 2px #4e8cf2; color: #95baf7; font-size: 30px">
+      <img src="assets/icons/dog-paw.png">
+      <b> Paws Animal Shelter</b>
+    </a>
+
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="d-flex">
+      <input
+        class="form-control me-2"
+        type="text"
+        placeholder="Search"
+        style="width: 500px"
+        formControlName="searchString">
+      <button
+        mat-icon-button
+        class="text-light"
+        type="submit">
+        <mat-icon>search</mat-icon>
+      </button>
+    </form>
+
     <ul class="navbar-nav navbar-right">
       <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/animals/all">Animals</a></li>
       <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/quiz">Quiz</a></li>

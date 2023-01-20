@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-4"></div>
     <div class="col-sm-4">
-      <mat-card>
+      <img src="assets/icons/edit-profile2.jpg" style="width: 500px;">
+    </div>
+    <div class="col-sm-4">
         <form [formGroup]="animalForm" (ngSubmit)="onSubmit()" class="was-validated">
           <div class="form-floating">
             <input
@@ -81,10 +82,12 @@
           </div>
           <br>
           <div style="text-align: center">
-            <button class="btn btn-outline-primary text-dark" type="submit">Submit</button>
+            <button mat-button type="submit" style="background-color: #f3ab41; color: white">Submit</button>
           </div>
         </form>
-      </mat-card>
+    </div>
+    <div class="col-sm-4">
+      <img src="assets/icons/edit-profile1.jpg" style="width: 500px; margin-top: 150px">
     </div>
   </div>
 </div>

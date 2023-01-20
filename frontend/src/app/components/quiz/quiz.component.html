@@ -2,28 +2,50 @@
   <div class="row">
     <div class="col-sm-2"></div>
 
-    <div class="col-md-8">
-      <mat-card>
-        <form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
-          <div class="form-floating" *ngFor="let quiz of quizList">
-            <select
-              id="option"
-              formControlName="question1"
-              class="form-select">
-              <option
-                *ngFor="let option of quiz.options">
-                {{option}}</option>
-            </select>
-            <label for="option">{{quiz.question}}</label>
+    <div class="col-md-8" *ngIf="startQuiz && !finishedQuiz">
+      <h3 style="color: #4e8cf2">{{question}}</h3>
+      <div class="btn-group" *ngFor="let option of options">
+        <button class="optionButton" mat-button type="button" (click)="onNextQuestion(option)">
+          {{option}}
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-8" *ngIf="!startQuiz && !finishedQuiz">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <h3 style="color: #4e8cf2; font-family: fantasy; margin-top: 50px">
+            Do you ask yourself,
+            <br> what pet should I get?
+            <br> <br>Take this quiz!
             <br>
-          </div>
-          <br>
-          <br>
-          <div style="text-align: center">
-            <button class="btn btn-outline-primary text-dark" type="submit">Submit</button>
-          </div>
-        </form>
-      </mat-card>
+          </h3>
+          <button
+            mat-button
+            style="background-color: #f3ab41; color: white; font-size: 30px; margin-top: 30px"
+            type="button"
+            (click)="onStartQuiz()">
+            Start Quiz!
+          </button>
+        </div>
+        <div class="col-md-4">
+          <img src="assets/icons/quiz.jpg" style="height: 500px">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 text-center" *ngIf="startQuiz && finishedQuiz" style="color: #4e8cf2; font-family: fantasy; margin-top: 50px">
+      <h3>
+        Congratulations!<br><br>Your points are:<br><br>
+      </h3>
+
+      <div class="list-group" *ngFor="let res of result" style="width: 200px; margin-left: 330px">
+        <div class="list-group-item list-group-item-action" *ngIf="res.points>0">
+          <a style="text-decoration:none; font-family: Candara" target="_blank" [routerLink]="['/animals', 'search', res.animal]">
+            {{res.animal}} {{res.points}}/10
+          </a>
+        </div>
+      </div>
     </div>
 
   </div>

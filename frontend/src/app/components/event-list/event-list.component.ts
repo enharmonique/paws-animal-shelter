@@ -9,6 +9,7 @@ import {Event} from "../../model/event.model";
 })
 export class EventListComponent implements OnInit {
   events: Event[] = [];
+  loggedInUserId!: string | null;
 
   constructor(private eventService: EventService) { }
 
@@ -16,12 +17,27 @@ export class EventListComponent implements OnInit {
     this.eventService.getEvents().subscribe(
       events => {
         this.events = events;
-        console.log(events);
       }
     );
+    this.loggedInUserId = localStorage.getItem('loggedInUserId');
   }
 
-  onAttend() {
+  onAttend(event: Event) {
+    this.eventService.attendEvent(event.id, event, this.loggedInUserId!).subscribe();
+  }
 
+  hasAttended(event: Event) {
+    if (event.partcipantsId) {
+      for (let particpant of event.partcipantsId) {
+        if (particpant == this.loggedInUserId) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  onUnattend(event: Event) {
+    this.eventService.unattendEvent(event.id, event, this.loggedInUserId!).subscribe();
   }
 }

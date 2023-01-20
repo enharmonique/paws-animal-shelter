@@ -23,7 +23,15 @@ export class AdoptionService {
 
   public getAdoptionsByUserId(id: string): Observable<Adoption[]> {
     return this.http.get<Adoption[]>(this.adoptionsUrl+'/id/'+id).pipe(
-      tap(data => console.log(data))
+      // tap(data => console.log(data))
+    );
+  }
+
+  public deleteAdoption(id: String): Observable<any> {
+    return this.http.delete(this.adoptionsUrl+'/delete/'+id).pipe(
+      map((res: any) => {
+        return res
+      })
     );
   }
 }
