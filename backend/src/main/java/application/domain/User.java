@@ -16,6 +16,5 @@ public class User {
     @Getter @Setter @NonNull  private String password;
     @Getter @Setter private String address;
     @Getter @Setter private int age;
-    @Getter @Setter private String description;
     @Getter @Setter private String profilePicturePath;
 }
