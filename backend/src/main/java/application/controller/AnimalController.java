@@ -37,6 +37,20 @@ public class AnimalController {
         return ResponseEntity.ok(animals);
     }
 
+    @RequestMapping(value = "/search/{searchString}", method = RequestMethod.GET)
+    public ResponseEntity<List<Animal>> getAnimalsBySearch(@PathVariable String searchString) {
+        List<Animal> animals = animalRepository
+                .findAll()
+                .stream()
+                .filter(animal ->
+                        animal.getName().toLowerCase().contains(searchString.toLowerCase()) ||
+                        animal.getType().toString().toLowerCase().contains(searchString.toLowerCase()) ||
+                        animal.getBreed().toLowerCase().contains(searchString.toLowerCase())
+                )
+                .toList();
+        return ResponseEntity.ok(animals);
+    }
+
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<Animal> addAnimal(@RequestBody Animal animal){
         animalRepository.save(animal);

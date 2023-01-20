@@ -1,6 +1,6 @@
 package application.controller;
 
-import application.domain.WishlistEntry;
+import application.domain.WishlistEntry;;
 import application.repository.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/wishlist")
-
 public class WishlistController {
     @Autowired
     private WishlistRepository wishlistRepository;
@@ -22,23 +21,24 @@ public class WishlistController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<WishlistEntry> add(@RequestBody WishlistEntry wishlistEntry){
+        System.out.println(wishlistEntry);
         wishlistRepository.save(wishlistEntry);
         return ResponseEntity.ok().body(wishlistEntry);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> delete(@PathVariable String id) {
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteWishlistEntry(@PathVariable String id) {
         wishlistRepository.deleteById(id);
         return ResponseEntity.ok().body(id);
     }
 
     @RequestMapping(value = "/id/{idUser}", method = RequestMethod.GET)
-    public ResponseEntity<List<WishlistEntry>> getAdoptionsByUserId(@PathVariable String idUser) {
-        List<WishlistEntry> wishlistEntries = wishlistRepository
+    public ResponseEntity<List<WishlistEntry>> getWishlistByUserId(@PathVariable String idUser) {
+        List<WishlistEntry> wishlist = wishlistRepository
                 .findAll()
                 .stream()
                 .filter(wishlistEntry -> wishlistEntry.getIdUser().equals(idUser))
                 .toList();
-        return ResponseEntity.ok(wishlistEntries);
+        return ResponseEntity.ok(wishlist);
     }
 }

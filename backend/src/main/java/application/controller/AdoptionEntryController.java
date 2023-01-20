@@ -52,4 +52,10 @@ public class AdoptionEntryController {
                 .toList();
         return ResponseEntity.ok(adoptions);
     }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteAdoption(@PathVariable String id) {
+        adoptionEntryRepository.deleteById(id);
+        return ResponseEntity.ok().body(id);
+    }
 }

@@ -13,6 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class WishlistEntry {
     @Id
     private String id;
-    private Animal animal;
     private String idUser;
+    private String idAnimal;
 }

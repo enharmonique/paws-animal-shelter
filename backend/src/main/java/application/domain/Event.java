@@ -17,4 +17,5 @@ public class Event {
     @Getter @Setter private String description;
     @Getter @Setter private String imagePath;
     @Getter @Setter private String noParticipants;
+    @Getter @Setter private String[] participantsId;
 }
