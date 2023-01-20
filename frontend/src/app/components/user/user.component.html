@@ -8,7 +8,6 @@
       <div style="color: #95baf7">
         <h4>Address: <i>{{user.address}}</i></h4>
         <h4>Age: {{user.age}}</h4>
-        <h5><i>{{user.description}}</i></h5>
       </div>
       <button mat-button type="button"
               style="background-color: #f3ab41; color: white; float: right"
@@ -41,8 +40,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let animal of animals" [routerLink]="['/animals/get', animal.id]">
-        <td>{{animal.name}}</td>
+      <tr *ngFor="let animal of animals">
+        <td [routerLink]="['/animals/get', animal.id]">{{animal.name}}</td>
         <td>{{animal.type}}</td>
         <td>{{animal.breed}}</td>
         <td>pending</td>

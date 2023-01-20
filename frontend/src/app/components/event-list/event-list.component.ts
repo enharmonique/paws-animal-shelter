@@ -27,8 +27,8 @@ export class EventListComponent implements OnInit {
   }
 
   hasAttended(event: Event) {
-    if (event.partcipantsId) {
-      for (let particpant of event.partcipantsId) {
+    if (event.participantsId) {
+      for (let particpant of event.participantsId) {
         if (particpant == this.loggedInUserId) {
           return true;
         }

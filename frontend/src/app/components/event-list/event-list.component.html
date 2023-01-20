@@ -2,26 +2,27 @@
   <div class="row">
     <div class="col-md-4" *ngFor="let event of events">
       <mat-card>
-        <mat-card-title style="color: #4e8cf2">
+        <mat-card-title style="font-family: fantasy;color: #4e8cf2">
           <img class="center" [src]="event.imagePath" alt="{{event.name}}">
           {{event.name}}
         </mat-card-title>
         <mat-card-content>
           <p>
-            <i style="color: #4e8cf2">
+            <i style="color: #4e8cf2; font-family: Candara">
               {{event.location}} <br>
               {{event.date}} <br>
             </i>
-            <small style="color: #95baf7">{{event.description}}</small> <br>
+            <i style="color: #95baf7; font-family: Candara" >{{event.description}}</i> <br>
             <i style="color: #4e8cf2">Number of participants: {{event.noParticipants}}</i>
           </p>
-          <div *ngIf="loggedInUserId">
+          <div *ngIf="loggedInUserId" style="float: right">
             <button
               *ngIf="!hasAttended(event); else undoAttend"
               mat-button
               type="button"
               style="background-color: #f3ab41; color: white"
               (click)="onAttend(event)">
+              <mat-icon>add</mat-icon>
               Attend
             </button>
             <ng-template #undoAttend>
@@ -30,6 +31,7 @@
                 type="button"
                 style="background-color: #f3ab41; color: white"
                 (click)="onUnattend(event)">
+                <mat-icon>remove</mat-icon>
                 Unattend
               </button>
             </ng-template>

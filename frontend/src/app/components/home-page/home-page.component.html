@@ -6,6 +6,7 @@
       <h3>We aim to find the best companions<span></span></h3>
       <h3>for homeless pets in need<span></span></h3>
       <a [routerLink]="['/animals/all']" type="button" class="cta">ADOPT</a>
+      <a *ngIf="!loggedInUserId" [routerLink]="['/login']" type="button" class="cta" style="margin-left: 10px">SIGN IN</a>
     </div>
   </div>
 </section>

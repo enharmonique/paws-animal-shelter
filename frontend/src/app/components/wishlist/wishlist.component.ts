@@ -64,7 +64,7 @@ export class WishlistComponent implements OnInit {
       let id = this.getWishlistEntryByAnimalId(animal.id!);
       if (id != null) {
         this.wishlistService.deleteWishlistEntry(id).subscribe();
-        window.location.reload()
+        window.location.reload();
       }
     }
   }

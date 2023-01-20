@@ -68,6 +68,7 @@ export class UserComponent implements OnInit {
       let id = this.getAdoptionByAnimalId(animal.id!);
       if (id != null) {
         this.adoptionsService.deleteAdoption(id).subscribe();
+        window.location.reload();
       }
     }
   }

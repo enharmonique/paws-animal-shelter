@@ -17,8 +17,8 @@ export class AddAnimalFormComponent implements OnInit {
       'name': new FormControl(null, [Validators.required]),
       'type': new FormControl(null, [Validators.required]),
       'breed': new FormControl(null, [Validators.required]),
-      'age': new FormControl(null, [Validators.required]),
-      'description': new FormControl(null, [Validators.required]),
+      'age': new FormControl('1 year', [Validators.required]),
+      'description': new FormControl('desc', [Validators.required]),
       'imagePath': new FormControl(null, [Validators.required])
     });
   }

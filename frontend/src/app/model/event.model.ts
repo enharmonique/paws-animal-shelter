@@ -6,5 +6,5 @@ export class Event {
   description!: string;
   imagePath!: string;
   noParticipants!: number;
-  partcipantsId!: string[];
+  participantsId!: string[];
 }

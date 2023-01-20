@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit{
   logout() {
     localStorage.clear();
     this.loggedIn = false;
-    this.router.navigate(['/animals/all']).then(r => window.location.reload());
+    this.router.navigate(['/home']).then(r => window.location.reload());
   }
 
   onSubmit() {

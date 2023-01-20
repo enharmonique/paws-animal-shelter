@@ -12,11 +12,10 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   ngOnInit(): void {
     this.registerForm = new FormGroup({
-      'username': new FormControl('Enter a username', [Validators.required]),
+      'username': new FormControl(null, [Validators.required]),
       'password': new FormControl(null, [Validators.required]),
-      'address': new FormControl('address', [Validators.required]),
-      'age': new FormControl(0, [Validators.required]),
-      'description': new FormControl('description...', [Validators.required]),
+      'address': new FormControl(null, [Validators.required]),
+      'age': new FormControl(null, [Validators.required]),
       'profilePicturePath': new FormControl(null, [Validators.required])
     });
   }
@@ -30,7 +29,6 @@ export class RegisterComponent implements OnInit {
         password: this.registerForm.value['password'],
         address: this.registerForm.value['address'],
         age: this.registerForm.value['age'],
-        description: this.registerForm.value['description'],
         profilePicturePath: this.registerForm.value['profilePicturePath']
       }).subscribe((res) => {
       if(res.errorFlag == false){

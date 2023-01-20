@@ -28,11 +28,13 @@ export class EventService {
 
   public attendEvent(id: string, event: Event, idParticipant: string): Observable<Event> {
     event.noParticipants++;
-    if (event.partcipantsId) {
+    console.log("before"+event.participantsId);
+    if (event.participantsId) {
     } else {
-      event.partcipantsId = [];
+      event.participantsId = [];
     }
-    event.partcipantsId.push(idParticipant);
+    event.participantsId.push(idParticipant);
+    console.log(event.participantsId);
     const body = JSON.stringify(event);
     return this.http.put<Event>(
       this.eventsUrl+'/update/'+id,
@@ -43,9 +45,9 @@ export class EventService {
 
   unattendEvent(id: string, event: Event, idParticipant: string) {
     event.noParticipants--;
-    const index = event.partcipantsId.indexOf(idParticipant, 0);
+    const index = event.participantsId.indexOf(idParticipant, 0);
     if (index > -1) {
-      event.partcipantsId.splice(index, 1);
+      event.participantsId.splice(index, 1);
     }
     const body = JSON.stringify(event);
     return this.http.put<Event>(
